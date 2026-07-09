@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>纸汇通 · 供应商智能管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(160deg, #e8f0fe 0%, #d4e2fc 40%, #c5d9f8 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .phone-frame {
+      max-width: 420px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 48px;
+      box-shadow: 0 35px 60px rgba(30, 60, 120, 0.15), 0 15px 30px rgba(20, 50, 100, 0.1);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #d6e3fa;
+      height: 850px;
+      display: flex;
+      flex-direction: column;
+    }
+    .dynamic-island {
+      background: linear-gradient(135deg, #1a2b4a, #0f1d33);
+      width: 115px;
+      height: 30px;
+      border-radius: 20px;
+      margin: 14px auto 10px;
+      flex-shrink: 0;
+    }
+    .app-content {
+      padding: 4px 20px 20px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .app-content.no-scroll {
+      overflow-y: hidden;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .app-name {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1a56db, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .tagline {
+      font-size: 12px;
+      font-weight: 600;
+      color: #3b82f6;
+      background: #eff6ff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .ai-badge {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .page {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+    }
+    .page.active {
+      display: flex;
+    }
+
+    .metrics-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .metric-card {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 12px 10px;
+      text-align: center;
+      border: 1px solid #e8f0fe;
+      box-shadow: 0 4px 14px rgba(30, 64, 120, 0.04);
+    }
+    .metric-card .metric-icon {
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+    .metric-card .metric-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: #1e3a8a;
+      line-height: 1.1;
+    }
+    .metric-card .metric-label {
+      font-size: 10px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .chart-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      border: 1px solid #e8f0fe;
+      box-shadow: 0 4px 14px rgba(30, 64, 120, 0.04);
+      flex-shrink: 0;
+    }
+    .chart-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-item {
+      margin-bottom: 8px;
+    }
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: #334155;
+    }
+    .progress-bar {
+      height: 7px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      flex: 1;
+      color: #475569;
+      line-height: 1.4;
+    }
+    .timeline-content strong {
+      color: #1e3a8a;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .nav-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid #e8f0fe;
+      box-shadow: 0 6px 16px rgba(30, 64, 120, 0.05);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+    }
+    .icon-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .bg-blue {
+      background: #eff6ff;
+    }
+    .bg-green {
+      background: #ecfdf5;
+    }
+    .bg-purple {
+      background: #f5f3ff;
+    }
+    .bg-orange {
+      background: #fff7ed;
+    }
+    .icon-blue {
+      color: #3b82f6;
+    }
+    .icon-green {
+      color: #10b981;
+    }
+    .icon-purple {
+      color: #8b5cf6;
+    }
+    .icon-orange {
+      color: #f97316;
+    }
+    .nav-card span {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1e293b;
+    }
+    .nav-card small {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .back-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #3b82f6;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      color: #64748b;
+      background: transparent;
+      border: none;
+      transition: 0.2s;
+    }
+    .tab.active {
+      background: #ffffff;
+      color: #1e3a8a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .tab-content {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .section-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 16px 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 6px 18px rgba(30, 64, 120, 0.05);
+      border: 1px solid #e8f0fe;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .smart-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f0f7ff;
+      padding: 10px 14px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+    }
+    .ocr-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .file-upload-btn {
+      background: #f1f5f9;
+      border: 2px dashed #94a3b8;
+      border-radius: 18px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #1e3a8a;
+      cursor: pointer;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .file-upload-btn i {
+      color: #8b5cf6;
+      font-size: 18px;
+    }
+    .file-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .chip {
+      background: #e0e7ff;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #a5b4fc;
+    }
+    .chip i.fa-times-circle {
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group {
+      flex: 1;
+      margin-bottom: 8px;
+    }
+    .input-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #475569;
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #0f172a;
+      outline: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .input-field:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+    .textarea-field {
+      width: 100%;
+      padding: 12px 14px;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      font-size: 13px;
+      resize: vertical;
+      min-height: 80px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+    }
+    .primary-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: none;
+      width: 100%;
+      padding: 14px;
+      border-radius: 28px;
+      font-weight: 800;
+      font-size: 15px;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .camera-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .camera-viewfinder {
+      width: 300px;
+      height: 380px;
+      background: #1e293b;
+      border-radius: 28px;
+      border: 3px solid #3b82f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .cam-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 4px solid #3b82f6;
+      cursor: pointer;
+      color: #1e3a8a;
+    }
+    .badge {
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .log-item {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 8px;
+      border-left: 3px solid #3b82f6;
+      font-size: 13px;
+    }
+    .log-item strong {
+      color: #1e3a8a;
+    }
+    .auto-badge {
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
+      margin-left: 6px;
+    }
+    .footer-text {
+      text-align: center;
+      padding: 6px 0 2px;
+      font-size: 10px;
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+    .hidden-chart {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="dynamic-island"></div>
+    <div class="app-content no-scroll" id="appContainer">
+      <!-- 首页 -->
+      <div class="page active" id="homePage">
+        <div class="header">
+          <div class="logo-area">
+            <span class="app-name">纸汇通</span>
+            <span class="tagline"><i class="fas fa-leaf"></i> 供应商管理</span>
+          </div>
+          <div class="ai-badge"><i class="fas fa-robot"></i> AI赋能</div>
+        </div>
+
+        <!-- 可视化指标卡 -->
+        <div class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-icon icon-blue"><i class="fas fa-building"></i></div>
+            <div class="metric-value">186</div>
+            <div class="metric-label">总供应商数</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon icon-green"><i class="fas fa-star"></i></div>
+            <div class="metric-value">72</div>
+            <div class="metric-label">优质供应商</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon icon-purple"><i class="fas fa-handshake"></i></div>
+            <div class="metric-value">18<span style="font-size:13px;">年</span></div>
+            <div class="metric-label">最长合作年限</div>
+          </div>
+        </div>
+
+        <!-- 行业分布环形图 + 合作年限柱状图 - 已隐藏 -->
+        <div class="hidden-chart"></div>
+
+        <!-- 风险等级占比 -->
+        <div class="chart-card">
+          <div class="chart-title"><i class="fas fa-shield-alt icon-orange"></i> 供应商风险等级占比</div>
+          <div class="progress-item">
+            <div class="progress-header"><span>🟢 低风险</span><span>65%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:65%; background:#10b981;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header"><span>🟡 中风险</span><span>22%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:22%; background:#f59e0b;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header"><span>🔴 高风险</span><span>8%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:8%; background:#ef4444;"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-header"><span>⚪ 未评估</span><span>5%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:5%; background:#94a3b8;"></div></div>
+          </div>
+        </div>
+
+        <!-- 近期动态时间轴 -->
+        <div class="chart-card">
+          <div class="chart-title"><i class="fas fa-clock icon-purple"></i> 近期动态</div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#3b82f6;"></div>
+            <div class="timeline-content"><strong>今日</strong> 新增供应商 清风纸业（华南）有限公司</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#10b981;"></div>
+            <div class="timeline-content"><strong>昨日</strong> 恒安纸业工商信息更新完成</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:#f59e0b;"></div>
+            <div class="timeline-content"><strong>7月7日</strong> 维达纸业经营信息AI解析完成</div>
+          </div>
+        </div>
+
+        <!-- 功能按钮 -->
+        <div class="nav-grid">
+          <div class="nav-card" onclick="navigateTo('supplierAdd')">
+            <div class="icon-circle bg-green"><i class="fas fa-user-plus icon-green"></i></div>
+            <span>供应商新增</span>
+            <small>录入新供应商档案</small>
+          </div>
+          <div class="nav-card" onclick="navigateTo('supplierEdit')">
+            <div class="icon-circle bg-blue"><i class="fas fa-user-edit icon-blue"></i></div>
+            <span>供应商维护</span>
+            <small>编辑已有供应商信息</small>
+          </div>
+          <div class="nav-card" onclick="showComingSoon('供应商查询')">
+            <div class="icon-circle bg-purple"><i class="fas fa-search icon-purple"></i></div>
+            <span>供应商查询</span>
+            <small>多维度检索与筛选</small>
+          </div>
+          <div class="nav-card" onclick="showComingSoon('大数据AI画像')">
+            <div class="icon-circle bg-orange"><i class="fas fa-chart-pie icon-orange"></i></div>
+            <span>大数据AI画像</span>
+            <small>智能风险评估与画像</small>
+          </div>
+        </div>
+        <div class="footer-text"><i class="fas fa-shield-alt"></i> 纸汇通 · 纸品供应商智能管理平台</div>
+      </div>
+
+      <!-- 供应商新增/维护子页面 -->
+      <div class="page" id="supplierPage">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> 返回</button>
+        <div class="header" style="margin-bottom:8px;">
+          <span style="font-weight:800; font-size:18px; color:#1e3a8a;" id="supplierPageTitle">供应商新增</span>
+        </div>
+        <div class="tabs">
+          <button class="tab active" onclick="switchTab('basic')">基础信息</button>
+          <button class="tab" onclick="switchTab('business')">工商信息</button>
+          <button class="tab" onclick="switchTab('operation')">经营信息</button>
+          <button class="tab" onclick="switchTab('log')">更新日志</button>
+        </div>
+        <div class="tab-content active" id="tab-basic">
+          <div class="section-card">
+            <div class="smart-row"><span style="font-weight:600;font-size:13px;"><i class="fas fa-camera-retro" style="color:#f97316;"></i> 智能识别名片</span><button class="ocr-btn" onclick="openCamera()"><i class="fas fa-camera"></i> 拍照填入</button></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">供应商编号</span><input class="input-field" placeholder="自动生成" id="supplierId"></div><div class="input-group"><span class="input-label">供应商名称</span><input class="input-field" placeholder="企业全称" id="supplierName"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">所属国家|地区</span><input class="input-field" placeholder="中国" id="country"></div><div class="input-group"><span class="input-label">所在城市</span><input class="input-field" placeholder="城市" id="city"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">联系人1</span><input class="input-field" placeholder="姓名" id="contact1"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" placeholder="职务" id="title1"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">联系人2</span><input class="input-field" placeholder="姓名" id="contact2"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" placeholder="职务" id="title2"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">联系电话</span><input class="input-field" placeholder="手机/座机" id="phone"></div><div class="input-group"><span class="input-label">邮箱</span><input class="input-field" placeholder="email" id="email"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">微信号</span><input class="input-field" placeholder="微信" id="wechat"></div><div class="input-group"><span class="input-label">官网|社媒</span><input class="input-field" placeholder="网址" id="website"></div></div>
+          </div>
+          <button class="primary-btn" onclick="saveSupplier()"><i class="fas fa-save"></i> 保存基础信息</button>
+        </div>
+        <div class="tab-content" id="tab-business">
+          <div class="section-card">
+            <div class="section-title"><i class="fas fa-building"></i> 工商信息 <span class="badge">启信宝/企查查</span></div>
+            <div class="input-group"><span class="input-label">统一社会信用代码</span><input class="input-field" placeholder="自动填入" id="creditCode" readonly></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">法定代表人</span><input class="input-field" placeholder="法人" id="legalPerson" readonly></div><div class="input-group"><span class="input-label">注册资本</span><input class="input-field" placeholder="万元" id="regCapital" readonly></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">成立年限</span><input class="input-field" placeholder="年" id="establishYears" readonly></div><div class="input-group"><span class="input-label">企业规模</span><input class="input-field" placeholder="规模" id="companyScale" readonly></div></div>
+            <button class="primary-btn" onclick="fetchBusinessInfo()"><i class="fas fa-sync-alt"></i> 调用工商API自动填入</button>
+          </div>
+        </div>
+        <div class="tab-content" id="tab-operation">
+          <div class="section-card">
+            <div class="section-title"><i class="fas fa-chart-line"></i> 经营信息 <span class="badge">AI解析生成</span></div>
+            <div class="input-group"><span class="input-label">📝 访谈描述（手动输入或上传文件OCR解析）</span><textarea class="textarea-field" placeholder="粘贴访谈记录，或上传文档自动解析..." id="interviewInput"></textarea></div>
+            <button class="file-upload-btn" id="uploadDocBtn"><i class="fas fa-file-upload"></i> 上传文档 OCR 解析 <span>(PDF/Word/Excel/图片)</span></button>
+            <div class="file-chips" id="fileChipsContainer"></div>
+            <button class="primary-btn" style="margin-bottom:12px;" onclick="aiParseOperation()"><i class="fas fa-magic"></i> AI解析生成经营信息</button>
+            <div class="input-row"><div class="input-group"><span class="input-label">企业资质</span><input class="input-field" id="opQualification"></div><div class="input-group"><span class="input-label">认证体系</span><input class="input-field" id="opCertification"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">出口资质</span><input class="input-field" id="opExport"></div><div class="input-group"><span class="input-label">内部分级</span><input class="input-field" id="opGrade"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">是否涉风险名单</span><input class="input-field" id="opRisk"></div><div class="input-group"><span class="input-label">主营产品</span><input class="input-field" id="opMainProduct"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">核心品类</span><input class="input-field" id="opCoreCategory"></div><div class="input-group"><span class="input-label">年产能规模</span><input class="input-field" id="opCapacity"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">厂房面积</span><input class="input-field" id="opFactoryArea"></div><div class="input-group"><span class="input-label">主要机台</span><input class="input-field" id="opMachine"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">是否有外贸经验</span><input class="input-field" id="opForeignTrade"></div><div class="input-group"><span class="input-label">员工人数</span><input class="input-field" id="opEmployees"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">外贸团队规模</span><input class="input-field" id="opTradeTeam"></div><div class="input-group"><span class="input-label">主要外贸市场</span><input class="input-field" id="opMarket"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">主要服务客户</span><input class="input-field" id="opClients"></div><div class="input-group"><span class="input-label">最小起订量(MOQ)</span><input class="input-field" id="opMOQ"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">标准交货周期</span><input class="input-field" id="opDelivery"></div><div class="input-group"><span class="input-label">合作年限</span><input class="input-field" id="opCooperationYears"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">历史累计订单量</span><input class="input-field" id="opOrderVolume"></div><div class="input-group"><span class="input-label">年采购额</span><input class="input-field" id="opAnnualPurchase"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">默认结算方式</span><input class="input-field" id="opSettlement"></div><div class="input-group"><span class="input-label">付款账期</span><input class="input-field" id="opPaymentTerms"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">历史履约评级</span><input class="input-field" id="opPerformance"></div><div class="input-group"><span class="input-label">综合风险等级</span><input class="input-field" id="opRiskLevel"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">交付风险</span><input class="input-field" id="opDeliveryRisk"></div><div class="input-group"><span class="input-label">质量风险</span><input class="input-field" id="opQualityRisk"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">结算风险</span><input class="input-field" id="opSettlementRisk"></div><div class="input-group"><span class="input-label">国别风险</span><input class="input-field" id="opCountryRisk"></div></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">核心优势</span><input class="input-field" id="opAdvantage"></div><div class="input-group"><span class="input-label">待改进点</span><input class="input-field" id="opImprovement"></div></div>
+            <button class="primary-btn" onclick="saveOperationInfo()"><i class="fas fa-save"></i> 保存经营信息</button>
+          </div>
+        </div>
+        <div class="tab-content" id="tab-log">
+          <div class="section-card">
+            <div class="section-title"><i class="fas fa-history"></i> 更新日志 <span class="auto-badge">系统自动生成</span></div>
+            <div id="systemLogContainer"></div>
+            <p style="font-size:11px;color:#94a3b8;margin-top:10px;text-align:center;"><i class="fas fa-info-circle"></i> 更新日志由系统自动生成，无需人工填写</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="file" id="hiddenDocInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.txt,.rtf" multiple style="display:none;">
+    <div class="camera-modal" id="cameraModal">
+      <div class="camera-viewfinder"><i class="fas fa-id-card" style="font-size:40px;color:#60a5fa;"></i><span style="font-weight:600;">对准名片</span><span style="font-size:12px;color:#cbd5e1;">多模态视觉识别</span></div>
+      <div style="display:flex;gap:24px;"><div class="cam-btn" style="background:#ef4444;border-color:#fecaca;color:white;" onclick="closeCamera()"><i class="fas fa-times"></i></div><div class="cam-btn" onclick="captureCard()"><i class="fas fa-camera"></i></div></div>
+    </div>
+  </div>
+  <script>
+    let selectedDocFiles = [];
+    let systemLogs = [
+      { time: '2025-07-09 14:30', action: '系统自动记录：供应商档案创建' },
+      { time: '2025-07-09 14:32', action: '系统自动记录：基础信息已保存' }
+    ];
+    function getChinaTimeString() {
+      const now = new Date();
+      const chinaTime = new Date(now.getTime() + (8 * 60 * 60 * 1000) + (now.getTimezoneOffset() * 60 * 1000));
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${chinaTime.getUTCFullYear()}-${pad(chinaTime.getUTCMonth()+1)}-${pad(chinaTime.getUTCDate())} ${pad(chinaTime.getUTCHours())}:${pad(chinaTime.getUTCMinutes())}`;
+    }
+    function navigateTo(page) {
+      document.getElementById('homePage').classList.remove('active');
+      document.getElementById('supplierPage').classList.add('active');
+      document.getElementById('appContainer').classList.remove('no-scroll');
+      document.getElementById('supplierPageTitle').textContent = page === 'supplierAdd' ? '供应商新增' : '供应商维护';
+      if (page === 'supplierEdit') {
+        document.getElementById('supplierName').value = '恒安纸业集团有限公司';
+        document.getElementById('contact1').value = '陈雅琳';
+        document.getElementById('title1').value = '采购总监';
+        document.getElementById('phone').value = '139****2210';
+        document.getElementById('email').value = 'ychen@hengan.com';
+        document.getElementById('wechat').value = 'hengan_chen';
+        document.getElementById('website').value = 'www.hengan.com';
+      }
+    }
+    function goHome() {
+      document.getElementById('supplierPage').classList.remove('active');
+      document.getElementById('homePage').classList.add('active');
+      document.getElementById('appContainer').classList.add('no-scroll');
+    }
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      event.target.classList.add('active');
+    }
+    function showComingSoon(f) { alert(f + ' 功能即将上线，敬请期待！'); }
+    function openCamera() { document.getElementById('cameraModal').style.display = 'flex'; }
+    function closeCamera() { document.getElementById('cameraModal').style.display = 'none'; }
+    function captureCard() {
+      closeCamera();
+      document.getElementById('supplierName').value = '清风纸业（华南）有限公司';
+      document.getElementById('contact1').value = '林婉如';
+      document.getElementById('title1').value = '供应链经理';
+      document.getElementById('phone').value = '188****5623';
+      document.getElementById('email').value = 'linwr@qingfeng.com';
+      document.getElementById('wechat').value = 'paper_linwr';
+      document.getElementById('website').value = 'www.qingfengpaper.com';
+      addSystemLog('名片识别完成，基础信息已填入');
+      alert('📷 名片识别完成，基础信息已填入');
+    }
+    document.getElementById('uploadDocBtn').addEventListener('click', ()=> document.getElementById('hiddenDocInput').click());
+    document.getElementById('hiddenDocInput').addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      if (!files.length) return;
+      files.forEach(file => {
+        if (!selectedDocFiles.some(f => f.name === file.name && f.size === file.size)) {
+          selectedDocFiles.push(file);
+          document.getElementById('interviewInput').value += `\n[OCR解析: ${file.name}] 该公司拥有FSC认证，主营生活用纸，年产能30万吨。`;
+          addSystemLog(`上传文档 ${file.name} 并完成OCR解析`);
+        }
+      });
+      renderFileChips();
+      this.value = '';
+    });
+    function renderFileChips() {
+      const c = document.getElementById('fileChipsContainer');
+      c.innerHTML = '';
+      selectedDocFiles.forEach((f, i) => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        let icon = 'fa-file-lines';
+        if (f.name.endsWith('.pdf')) icon = 'fa-file-pdf';
+        else if (f.name.endsWith('.doc')||f.name.endsWith('.docx')) icon = 'fa-file-word';
+        else if (f.name.endsWith('.xls')||f.name.endsWith('.xlsx')) icon = 'fa-file-excel';
+        else if (f.type.startsWith('image/')) icon = 'fa-file-image';
+        chip.innerHTML = `<i class="fas ${icon}"></i><span>${f.name.substring(0,16)}</span><i class="fas fa-times-circle" data-index="${i}"></i>`;
+        c.appendChild(chip);
+      });
+      document.querySelectorAll('.fa-times-circle').forEach(icon => icon.addEventListener('click', function(e) {
+        const idx = e.target.getAttribute('data-index');
+        if (idx !== null) { selectedDocFiles.splice(parseInt(idx), 1); renderFileChips(); addSystemLog('移除已上传文档'); }
+      }));
+    }
+    function fetchBusinessInfo() {
+      document.getElementById('creditCode').value = '91350500MA32TQHXX8';
+      document.getElementById('legalPerson').value = '施文博';
+      document.getElementById('regCapital').value = '50000万人民币';
+      document.getElementById('establishYears').value = '40年';
+      document.getElementById('companyScale').value = '大型企业';
+      addSystemLog('工商信息已从启信宝/企查查同步');
+      alert('✅ 工商信息已同步');
+    }
+    function aiParseOperation() {
+      const d = {
+        opQualification:'ISO 9001, FSC认证',opCertification:'ISO 14001',opExport:'海关备案',opGrade:'A级',opRisk:'否',opMainProduct:'生活用纸',opCoreCategory:'面巾纸',opCapacity:'年产50万吨',opFactoryArea:'20万㎡',opMachine:'维美德纸机12台',opForeignTrade:'是',opEmployees:'3500人',opTradeTeam:'80人',opMarket:'东南亚、中东',opClients:'沃尔玛、家乐福',opMOQ:'1个20尺柜',opDelivery:'15-25天',opCooperationYears:'8年',opOrderVolume:'1200单',opAnnualPurchase:'2.5亿',opSettlement:'T/T',opPaymentTerms:'Net 60天',opPerformance:'AAA',opRiskLevel:'守信激励对象',opDeliveryRisk:'低',opQualityRisk:'低',opSettlementRisk:'极低',opCountryRisk:'低',opAdvantage:'产能充足',opImprovement:'新品开发周期可缩短'
+      };
+      for (const [k,v] of Object.entries(d)) document.getElementById(k).value = v;
+      addSystemLog('AI大模型解析完成，经营信息已生成');
+      alert('🤖 AI解析完成');
+    }
+    function addSystemLog(action) {
+      systemLogs.unshift({ time: getChinaTimeString(), action: '系统自动记录：' + action });
+      renderSystemLogs();
+    }
+    function renderSystemLogs() {
+      document.getElementById('systemLogContainer').innerHTML = systemLogs.slice(0,10).map(l => `<div class="log-item"><strong>${l.time}</strong> <span>${l.action}</span></div>`).join('');
+    }
+    function saveSupplier() { addSystemLog('基础信息已保存'); alert('✅ 已保存'); }
+    function saveOperationInfo() { addSystemLog('经营信息已保存'); alert('✅ 已保存'); }
+    renderFileChips();
+    renderSystemLogs();
+  </script>
+</body>
+</html>
