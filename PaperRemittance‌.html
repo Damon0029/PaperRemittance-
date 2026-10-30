@@ -94,6 +94,113 @@
     .modal-btn { flex: 1; padding: 12px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; border: none; }
     .modal-btn.confirm { background: #059669; color: #fff; }
     .modal-btn.cancel { background: #f1f5f9; color: #475569; }
+    .multi-select-wrapper { position: relative; }
+    .multi-select-display { width: 100%; padding: 10px 14px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 500; color: #0f172a; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: 'Plus Jakarta Sans', sans-serif; min-height: 44px; }
+    .multi-select-display:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+    .multi-select-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #dbeafe; border-radius: 14px; margin-top: 4px; box-shadow: 0 12px 24px rgba(0,0,0,0.08); z-index: 20; max-height: 200px; overflow-y: auto; display: none; padding: 8px; }
+    .multi-select-dropdown.show { display: block; }
+    .multi-option { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; }
+    .multi-option:hover { background: #eff6ff; }
+    .multi-option input[type="checkbox"] { accent-color: #3b82f6; }
+    .list-item { display: flex; align-items: center; justify-content: space-between; padding: 14px; background: #fff; border-radius: 16px; margin-bottom: 8px; border: 1px solid #e8f0fe; cursor: pointer; transition: 0.2s; }
+    .list-item:hover { background: #f8fafc; border-color: #3b82f6; }
+    .list-item-info { flex: 1; }
+    .list-item-name { font-weight: 700; font-size: 14px; color: #1e3a8a; }
+    .list-item-code { font-size: 11px; color: #94a3b8; }
+    .version-badge { background: #e0e7ff; color: #3730a3; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 10px; }
+    .current-version-bar { display: flex; align-items: center; justify-content: space-between; background: #f0f7ff; padding: 8px 14px; border-radius: 12px; margin-bottom: 12px; font-size: 13px; font-weight: 600; color: #1e3a8a; }
+    /* 权限管理按钮 */
+    .perm-btn { background: #eef4ff; border: 1px solid #bfdbfe; color: #2563eb; padding: 6px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; flex-shrink: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .perm-btn:hover { background: #dbeafe; }
+    .perm-btn.primary { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border: none; }
+    /* 人员列表项 */
+    .staff-item { display: flex; align-items: center; gap: 10px; padding: 12px; background: #f8fafc; border-radius: 16px; margin-bottom: 8px; border: 1px solid #e8f0fe; }
+    .staff-avatar { width: 40px; height: 40px; border-radius: 14px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+    .staff-info { flex: 1; min-width: 0; }
+    .staff-name { font-weight: 700; font-size: 14px; color: #1e293b; }
+    .staff-role { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .staff-actions { display: flex; gap: 6px; }
+    .staff-act-btn { width: 32px; height: 32px; border-radius: 10px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+    .staff-act-btn.edit { background: #e0e7ff; color: #3730a3; }
+    .staff-act-btn.del { background: #fee2e2; color: #dc2626; }
+    /* 字段修改高亮对比 */
+    .input-group.field-modified .input-field { background: #fff7ed; border-color: #fb923c; box-shadow: 0 0 0 3px rgba(251,146,60,0.15); }
+    .input-group.field-modified textarea.textarea-field { background: #fff7ed; border-color: #fb923c; }
+    .input-group.field-modified .input-label { color: #c2410c; }
+    .input-group.field-modified .input-label::after { content: "已修改"; display: inline-block; margin-left: 6px; font-size: 9px; font-weight: 700; background: #fed7aa; color: #c2410c; padding: 1px 6px; border-radius: 6px; vertical-align: middle; }
+    .old-value-hint { font-size: 10px; color: #94a3b8; margin-top: 3px; line-height: 1.4; }
+    .old-value-hint s { color: #9ca3af; }
+    .new-value-tag { color: #c2410c; font-weight: 700; }
+    /* 拜访时间标签 */
+    .visit-time-tag { margin-left: auto; font-size: 11px; font-weight: 600; color: #0369a1; background: #e0f2fe; padding: 4px 10px; border-radius: 10px; display: flex; align-items: center; gap: 4px; }
+    .multi-select-wrapper.field-modified .multi-select-display { background: #fff7ed; border-color: #fb923c; box-shadow: 0 0 0 3px rgba(251,146,60,0.15); }
+    /* 无权限提示图标 */
+    .no-perm-icon { font-size: 40px; color: #f59e0b; margin-bottom: 8px; }
+    .auto-tag { display: inline-block; font-size: 9px; font-weight: 700; background: #e0f2fe; color: #0369a1; padding: 1px 6px; border-radius: 6px; margin-left: 4px; text-transform: none; }
+    /* 现场照片 */
+    .pending-photo-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+    .pending-photo-item { position: relative; width: 70px; height: 70px; border-radius: 10px; overflow: hidden; border: 2px solid #fb923c; flex-shrink: 0; }
+    .pending-photo-item img { width: 100%; height: 100%; object-fit: cover; }
+    .pending-photo-del { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff; border: none; cursor: pointer; font-size: 10px; display: flex; align-items: center; justify-content: center; padding: 0; }
+    .photo-section-label { font-size: 12px; font-weight: 700; color: #1e3a8a; margin: 14px 0 8px; display: flex; align-items: center; gap: 6px; }
+    .photo-section-label.pending { color: #c2410c; }
+    .photo-history-item { display: flex; align-items: center; gap: 10px; padding: 10px; background: #f8fafc; border-radius: 14px; margin-bottom: 8px; border: 1px solid #e8f0fe; }
+    .photo-history-item img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; flex-shrink: 0; background: #e2e8f0; }
+    .photo-history-info { flex: 1; min-width: 0; }
+    .photo-history-name { font-size: 13px; font-weight: 700; color: #1e293b; }
+    .photo-history-time { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+    .photo-empty { text-align: center; padding: 20px 10px; color: #94a3b8; font-size: 12px; }
+    .photo-empty i { font-size: 26px; display: block; margin-bottom: 6px; color: #cbd5e1; }
+    /* ===== 供应商查询板块 ===== */
+    .query-mode-tabs { display: flex; gap: 6px; margin-bottom: 12px; background: #f1f5f9; border-radius: 16px; padding: 4px; flex-shrink: 0; }
+    .query-mode-tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 6px; border-radius: 14px; font-weight: 700; font-size: 12px; cursor: pointer; color: #64748b; background: transparent; border: none; transition: 0.2s; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .query-mode-tab.active { background: #ffffff; color: #1e3a8a; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .query-btns { display: flex; gap: 10px; margin-top: 12px; }
+    .query-reset-btn { flex: 1; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 12px; border-radius: 14px; font-weight: 700; font-size: 13px; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .query-result-head { display: flex; align-items: center; justify-content: space-between; margin: 2px 2px 10px; font-weight: 700; font-size: 13px; color: #1e3a8a; flex-shrink: 0; }
+    .query-result-count { font-size: 11px; font-weight: 700; color: #3b82f6; background: #eff6ff; padding: 3px 10px; border-radius: 10px; }
+    .query-item-main { flex: 1; min-width: 0; }
+    .query-item-sub { display: flex; gap: 10px; font-size: 11px; color: #64748b; margin-top: 3px; flex-wrap: wrap; }
+    .query-item-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .query-tag { background: #eef4ff; color: #2563eb; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; }
+    .status-badge { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; flex-shrink: 0; white-space: nowrap; }
+    .status-badge.ok { background: #ecfdf5; color: #059669; }
+    .status-badge.off { background: #f1f5f9; color: #94a3b8; }
+    .query-empty { text-align: center; padding: 30px 10px; color: #94a3b8; font-size: 12px; }
+    .query-empty i { font-size: 30px; display: block; margin-bottom: 8px; color: #cbd5e1; }
+    /* AI 会话查询 */
+    .ai-chat-area { flex: 1; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding-bottom: 8px; }
+    .ai-msg { max-width: 88%; padding: 10px 14px; border-radius: 18px; font-size: 13px; line-height: 1.5; }
+    .ai-msg.bot { background: #f0f7ff; color: #1e293b; border-bottom-left-radius: 6px; align-self: flex-start; }
+    .ai-msg.user { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border-bottom-right-radius: 6px; align-self: flex-end; }
+    .ai-msg .ai-parse-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .ai-parse-tag { background: #e0f2fe; color: #0369a1; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+    .ai-thinking { color: #94a3b8; font-style: italic; font-size: 12px; align-self: flex-start; }
+    .ai-example-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; flex-shrink: 0; }
+    .ai-example-chip { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 16px; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .ai-example-chip:hover { background: #ede9fe; }
+    .ai-input-row { display: flex; gap: 8px; flex-shrink: 0; }
+    .ai-result-inline { width: 100%; }
+    /* ===== 供应商画像档案页（只读） ===== */
+    .profile-hero { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff; border-radius: 24px; padding: 18px 16px; margin-bottom: 12px; box-shadow: 0 12px 24px rgba(37,99,235,0.25); flex-shrink: 0; }
+    .profile-hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .profile-hero-name { font-size: 17px; font-weight: 800; line-height: 1.35; }
+    .profile-hero-code { font-size: 11px; opacity: 0.85; margin-top: 3px; }
+    .profile-hero .status-badge.ok { background: rgba(255,255,255,0.22); color: #d1fae5; }
+    .profile-hero .status-badge.off { background: rgba(255,255,255,0.15); color: #e2e8f0; }
+    .profile-hero-tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .profile-hero-tags .query-tag { background: rgba(255,255,255,0.18); color: #fff; }
+    .profile-hero-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 11px; opacity: 0.92; }
+    .profile-section { margin-bottom: 12px; }
+    .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+    .profile-field { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .profile-field.full { grid-column: 1 / -1; }
+    .profile-label { font-size: 10px; font-weight: 700; color: #94a3b8; }
+    .profile-value { font-size: 13px; font-weight: 600; color: #1e293b; word-break: break-all; line-height: 1.4; }
+    .profile-value .query-tag { font-size: 10px; }
+    /* 画像查看模式 */
+    .view-mode .maintain-only { display: none !important; }
+    .view-badge { background: #e0f2fe; color: #0369a1; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px; margin-left: 6px; }
   </style>
 </head>
 <body>
@@ -101,229 +208,748 @@
     <div class="dynamic-island"></div>
     <div class="app-content no-scroll" id="appContainer">
       <div class="page active" id="homePage">
-        <div class="header">
-          <div class="logo-area"><span class="app-name">纸汇通</span><span class="tagline"><i class="fas fa-leaf"></i> 供应商管理</span></div>
-          <div class="ai-badge"><i class="fas fa-robot"></i> AI赋能</div>
-        </div>
-        <div class="metrics-row">
-          <div class="metric-card"><div class="metric-icon icon-blue"><i class="fas fa-building"></i></div><div class="metric-value">186</div><div class="metric-label">总供应商数</div></div>
-          <div class="metric-card"><div class="metric-icon icon-green"><i class="fas fa-calendar-plus"></i></div><div class="metric-value">23</div><div class="metric-label">季度新增供应商</div></div>
-          <div class="metric-card"><div class="metric-icon icon-purple"><i class="fas fa-handshake"></i></div><div class="metric-value">158</div><div class="metric-label">已合作供应商</div></div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title"><i class="fas fa-boxes icon-orange"></i> 品类供应商数量</div>
-          <div class="category-list" id="categoryList"></div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title"><i class="fas fa-clock icon-purple"></i> 近期动态</div>
-          <div class="timeline-item"><div class="timeline-dot" style="background:#3b82f6;"></div><div class="timeline-content"><strong>今日</strong> 新增供应商 清风纸业（华南）有限公司</div></div>
-          <div class="timeline-item"><div class="timeline-dot" style="background:#10b981;"></div><div class="timeline-content"><strong>昨日</strong> 恒安纸业工商信息更新完成</div></div>
-          <div class="timeline-item"><div class="timeline-dot" style="background:#f59e0b;"></div><div class="timeline-content"><strong>7月15日</strong> 维达纸业经营信息AI解析完成</div></div>
-        </div>
-        <div class="nav-grid">
-          <div class="nav-card" onclick="navigateTo('supplierAdd')"><div class="icon-circle bg-green"><i class="fas fa-user-plus icon-green"></i></div><span>供应商新增</span><small>录入新供应商档案</small></div>
-          <div class="nav-card" onclick="navigateTo('supplierEdit')"><div class="icon-circle bg-blue"><i class="fas fa-user-edit icon-blue"></i></div><span>供应商维护</span><small>编辑已有供应商信息</small></div>
-          <div class="nav-card" onclick="showComingSoon('供应商查询')"><div class="icon-circle bg-purple"><i class="fas fa-search icon-purple"></i></div><span>供应商查询</span><small>多维度检索与筛选</small></div>
-          <div class="nav-card" onclick="showComingSoon('大数据AI画像')"><div class="icon-circle bg-orange"><i class="fas fa-chart-pie icon-orange"></i></div><span>大数据AI画像</span><small>智能风险评估与画像</small></div>
-        </div>
+        <div class="header"><div class="logo-area"><span class="app-name">纸汇通</span><span class="tagline"><i class="fas fa-leaf"></i> 供应商管理</span></div><div class="ai-badge"><i class="fas fa-robot"></i> AI赋能</div></div>
+        <div class="metrics-row"><div class="metric-card"><div class="metric-icon icon-blue"><i class="fas fa-building"></i></div><div class="metric-value">186</div><div class="metric-label">总供应商数</div></div><div class="metric-card"><div class="metric-icon icon-green"><i class="fas fa-calendar-plus"></i></div><div class="metric-value">23</div><div class="metric-label">季度新增供应商</div></div><div class="metric-card"><div class="metric-icon icon-purple"><i class="fas fa-handshake"></i></div><div class="metric-value">158</div><div class="metric-label">已合作供应商</div></div></div>
+        <div class="chart-card"><div class="chart-title"><i class="fas fa-boxes icon-orange"></i> 品类供应商数量</div><div class="category-list" id="categoryList"></div></div>
+        <div class="chart-card"><div class="chart-title"><i class="fas fa-clock icon-purple"></i> 近期动态</div><div class="timeline-item"><div class="timeline-dot" style="background:#3b82f6;"></div><div class="timeline-content"><strong>今日</strong> 新增供应商 清风纸业（华南）有限公司</div></div><div class="timeline-item"><div class="timeline-dot" style="background:#10b981;"></div><div class="timeline-content"><strong>昨日</strong> 恒安纸业工商信息更新完成</div></div><div class="timeline-item"><div class="timeline-dot" style="background:#f59e0b;"></div><div class="timeline-content"><strong>7月15日</strong> 维达纸业经营信息AI解析完成</div></div></div>
+        <div class="nav-grid"><div class="nav-card" onclick="navigateTo('supplierAdd')"><div class="icon-circle bg-green"><i class="fas fa-user-plus icon-green"></i></div><span>供应商新增</span><small>录入新供应商档案</small></div><div class="nav-card" onclick="navigateTo('supplierEdit')"><div class="icon-circle bg-blue"><i class="fas fa-user-edit icon-blue"></i></div><span>供应商维护</span><small>编辑已有供应商信息</small></div><div class="nav-card" onclick="navigateTo('supplierQuery')"><div class="icon-circle bg-purple"><i class="fas fa-search icon-purple"></i></div><span>供应商查询</span><small>多维度检索与筛选</small></div><div class="nav-card" onclick="showComingSoon('大数据AI画像')"><div class="icon-circle bg-orange"><i class="fas fa-chart-pie icon-orange"></i></div><span>大数据AI画像</span><small>智能风险评估与画像</small></div></div>
         <div class="footer-text"><i class="fas fa-shield-alt"></i> 纸汇通 · 纸品供应商智能管理平台</div>
       </div>
 
-      <div class="page" id="supplierPage">
+      <div class="page" id="supplierListPage">
         <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> 返回</button>
-        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;" id="supplierPageTitle">供应商新增</span></div>
-        <div class="search-box" id="searchBox" style="display:none;">
-          <div class="search-wrapper">
-            <input class="search-input" placeholder="输入供应商名称模糊搜索..." id="supplierSearchInput" autocomplete="off" oninput="handleSearchInput()" onfocus="handleSearchInput()">
-            <div class="suggestions-dropdown" id="suggestionsBox"></div>
+        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;">供应商维护</span></div>
+        <div class="search-box"><div class="search-wrapper"><input class="search-input" placeholder="输入供应商名称模糊搜索..." id="listSearchInput" oninput="handleListSearch()"><div class="suggestions-dropdown" id="listSuggestionsBox"></div></div><button class="search-btn" onclick="searchSupplierList()"><i class="fas fa-search"></i> 搜索</button></div>
+        <div id="supplierListContainer" style="flex:1;overflow-y:auto;">
+          <div class="list-item" onclick="openSupplierDetail('恒安纸业集团有限公司','SUP-1001','V20250811-001')">
+            <div class="list-item-info"><div class="list-item-name">恒安纸业集团有限公司</div><div class="list-item-code">SUP-1001</div></div>
+            <button class="perm-btn" onclick="event.stopPropagation();openPermissionPage('恒安纸业集团有限公司','SUP-1001')"><i class="fas fa-user-shield"></i> 权限管理</button>
+            <span class="version-badge">V20250811-001</span>
+            <i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
           </div>
-          <button class="search-btn" onclick="searchSupplier()"><i class="fas fa-search"></i></button>
-          <button class="version-btn" onclick="showVersionHistory()"><i class="fas fa-history"></i> 历史版本</button>
-        </div>
-        <div class="tabs">
-          <button class="tab active" onclick="switchTab('basic')">基础信息</button>
-          <button class="tab" onclick="switchTab('business')">工商信息</button>
-          <button class="tab" onclick="switchTab('operation')">经营信息</button>
-          <button class="tab" onclick="switchTab('log')">更新日志</button>
-        </div>
-        <div class="tab-content active" id="tab-basic">
-          <div class="section-card">
-            <div class="smart-row"><span style="font-weight:600;font-size:13px;"><i class="fas fa-camera-retro" style="color:#f97316;"></i> 智能识别名片</span><button class="ocr-btn" onclick="openCamera()"><i class="fas fa-camera"></i> 拍照填入</button></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">供应商编号</span><input class="input-field" placeholder="自动生成" id="supplierId"></div><div class="input-group"><span class="input-label">供应商名称</span><input class="input-field" placeholder="企业全称" id="supplierName"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">所属国家|地区</span><input class="input-field" placeholder="中国" id="country"></div><div class="input-group"><span class="input-label">所在城市</span><input class="input-field" placeholder="城市" id="city"></div></div>
-            <div class="section-title" style="margin-top:8px;">联系人1</div>
-            <div class="input-row"><div class="input-group"><span class="input-label">姓名</span><input class="input-field" id="contact1"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" id="title1"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">联系电话</span><input class="input-field" id="phone1"></div><div class="input-group"><span class="input-label">邮箱</span><input class="input-field" id="email1"></div></div>
-            <div class="input-group"><span class="input-label">微信号</span><input class="input-field" id="wechat1"></div>
-            <div class="section-title" style="margin-top:8px;">联系人2</div>
-            <div class="input-row"><div class="input-group"><span class="input-label">姓名</span><input class="input-field" id="contact2"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" id="title2"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">联系电话</span><input class="input-field" id="phone2"></div><div class="input-group"><span class="input-label">邮箱</span><input class="input-field" id="email2"></div></div>
-            <div class="input-group"><span class="input-label">微信号</span><input class="input-field" id="wechat2"></div>
-            <div class="section-title" style="margin-top:8px;">其他联系方式</div>
-            <div class="input-group"><span class="input-label">自定义备注</span><textarea class="textarea-field" placeholder="其他联系方式、社媒账号等..." id="otherContact" style="min-height:50px;"></textarea></div>
-            <div class="input-group"><span class="input-label">官网|社媒地址</span><input class="input-field" placeholder="https://" id="website"></div>
+          <div class="list-item" onclick="openSupplierDetail('维达纸业（中国）有限公司','SUP-1002','V20250720-003')">
+            <div class="list-item-info"><div class="list-item-name">维达纸业（中国）有限公司</div><div class="list-item-code">SUP-1002</div></div>
+            <button class="perm-btn" onclick="event.stopPropagation();openPermissionPage('维达纸业（中国）有限公司','SUP-1002')"><i class="fas fa-user-shield"></i> 权限管理</button>
+            <span class="version-badge">V20250720-003</span>
+            <i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
           </div>
-          <button class="primary-btn" onclick="saveSupplier()"><i class="fas fa-save"></i> 保存基础信息</button>
-        </div>
-        <div class="tab-content" id="tab-business">
-          <div class="section-card">
-            <div class="section-title"><i class="fas fa-building"></i> 工商信息 <span class="badge">启信宝/企查查</span></div>
-            <div class="input-group"><span class="input-label">统一社会信用代码</span><input class="input-field" placeholder="自动填入" id="creditCode" readonly></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">法定代表人</span><input class="input-field" id="legalPerson" readonly></div><div class="input-group"><span class="input-label">注册资本</span><input class="input-field" id="regCapital" readonly></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">成立年限</span><input class="input-field" id="establishYears" readonly></div><div class="input-group"><span class="input-label">公司类型</span><input class="input-field" id="companyType" readonly></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">人员规模</span><input class="input-field" id="staffSize" readonly></div><div class="input-group"><span class="input-label">国标行业</span><input class="input-field" id="industry" readonly></div></div>
-            <div class="input-group"><span class="input-label">经营范围</span><textarea class="textarea-field" id="businessScope" readonly style="min-height:50px;"></textarea></div>
-            <button class="primary-btn" onclick="fetchBusinessInfo()"><i class="fas fa-sync-alt"></i> 调用工商API自动填入</button>
-            <button class="primary-btn" onclick="saveBusinessInfo()"><i class="fas fa-save"></i> 保存工商信息</button>
+          <div class="list-item" onclick="openSupplierDetail('清风纸业（华南）有限公司','SUP-1003','V20250801-001')">
+            <div class="list-item-info"><div class="list-item-name">清风纸业（华南）有限公司</div><div class="list-item-code">SUP-1003</div></div>
+            <button class="perm-btn" onclick="event.stopPropagation();openPermissionPage('清风纸业（华南）有限公司','SUP-1003')"><i class="fas fa-user-shield"></i> 权限管理</button>
+            <span class="version-badge">V20250801-001</span>
+            <i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
           </div>
         </div>
-        <div class="tab-content" id="tab-operation">
-          <div class="section-card">
-            <div class="section-title"><i class="fas fa-chart-line"></i> 经营信息 <span class="badge">AI解析生成</span></div>
-            <div class="input-group"><span class="input-label">📝 访谈描述</span><textarea class="textarea-field" placeholder="粘贴访谈记录，或上传文档自动解析..." id="interviewInput"></textarea></div>
-            <button class="file-upload-btn" id="uploadDocBtn"><i class="fas fa-file-upload"></i> 上传文档 OCR 解析</button>
-            <div class="file-chips" id="fileChipsContainer"></div>
-            <button class="primary-btn" style="margin-bottom:12px;" onclick="aiParseOperation()"><i class="fas fa-magic"></i> AI解析生成经营信息</button>
-            <div class="input-row"><div class="input-group"><span class="input-label">企业资质</span><input class="input-field" id="opQualification"></div><div class="input-group"><span class="input-label">认证体系</span><input class="input-field" id="opCertification"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">出口资质</span><input class="input-field" id="opExport"></div><div class="input-group"><span class="input-label">内部分级</span><select class="input-field" id="opGrade"><option value="">请选择</option><option>A级</option><option>B级</option><option>C级</option><option>D级</option></select></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">是否涉风险名单</span><select class="input-field" id="opRisk"><option value="">请选择</option><option>是</option><option>否</option></select></div><div class="input-group"><span class="input-label">主营产品</span><input class="input-field" id="opMainProduct"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">核心品类</span><input class="input-field" id="opCoreCategory"></div><div class="input-group"><span class="input-label">年产能规模</span><input class="input-field" id="opCapacity"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">厂房面积</span><input class="input-field" id="opFactoryArea"></div><div class="input-group"><span class="input-label">主要机台</span><input class="input-field" id="opMachine"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">是否有外贸经验</span><select class="input-field" id="opForeignTrade"><option value="">请选择</option><option>是</option><option>否</option></select></div><div class="input-group"><span class="input-label">员工人数</span><input class="input-field" id="opEmployees"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">外贸团队规模</span><input class="input-field" id="opTradeTeam"></div><div class="input-group"><span class="input-label">主要外贸市场</span><input class="input-field" id="opMarket"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">主要服务客户</span><input class="input-field" id="opClients"></div><div class="input-group"><span class="input-label">最小起订量(MOQ)</span><input class="input-field" id="opMOQ"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">标准交货周期</span><input class="input-field" id="opDelivery"></div><div class="input-group"><span class="input-label">合作年限</span><input class="input-field" id="opCooperationYears"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">历史累计订单量</span><input class="input-field" id="opOrderVolume"></div><div class="input-group"><span class="input-label">年采购额</span><input class="input-field" id="opAnnualPurchase"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">默认结算方式</span><input class="input-field" id="opSettlement"></div><div class="input-group"><span class="input-label">付款账期</span><input class="input-field" id="opPaymentTerms"></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">历史履约评级</span><select class="input-field" id="opPerformance"><option value="">请选择</option><option>AAA</option><option>AA</option><option>A</option><option>B</option><option>C</option></select></div><div class="input-group"><span class="input-label">综合风险等级</span><select class="input-field" id="opRiskLevel"><option value="">请选择</option><option>守信激励对象</option><option>失信惩戒对象</option><option>正常</option></select></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">交付风险</span><select class="input-field" id="opDeliveryRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div><div class="input-group"><span class="input-label">质量风险</span><select class="input-field" id="opQualityRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">结算风险</span><select class="input-field" id="opSettlementRisk"><option value="">请选择</option><option>极低</option><option>低</option><option>中</option><option>高</option></select></div><div class="input-group"><span class="input-label">国别风险</span><select class="input-field" id="opCountryRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div></div>
-            <div class="input-row"><div class="input-group"><span class="input-label">核心优势</span><input class="input-field" id="opAdvantage"></div><div class="input-group"><span class="input-label">待改进点</span><input class="input-field" id="opImprovement"></div></div>
-            <button class="primary-btn" onclick="saveOperationInfo()"><i class="fas fa-save"></i> 保存经营信息</button>
+      </div>
+
+      <div class="page" id="supplierQueryPage">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> 返回</button>
+        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;">供应商查询</span></div>
+        <div class="query-mode-tabs"><button class="query-mode-tab active" data-mode="multi" onclick="switchQueryMode('multi')"><i class="fas fa-sliders-h"></i> 多维条件查询</button><button class="query-mode-tab" data-mode="ai" onclick="switchQueryMode('ai')"><i class="fas fa-robot"></i> AI会话查询</button></div>
+        <div id="queryMultiPanel" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;">
+          <div class="section-card" style="flex-shrink:0;">
+            <div class="section-title"><i class="fas fa-filter" style="color:#3b82f6;"></i> 筛选条件</div>
+            <div class="input-group"><span class="input-label">供应商名称 <span style="text-transform:none;color:#94a3b8;">（支持模糊搜索）</span></span><input class="input-field" id="qName" placeholder="如：恒安 / 纸业 / 集团"></div>
+            <div class="input-row"><div class="input-group"><span class="input-label">供应品类</span><select class="input-field" id="qCategory"></select></div><div class="input-group"><span class="input-label">所在区域</span><select class="input-field" id="qRegion"></select></div></div>
+            <div class="input-group"><span class="input-label">合作状态</span><select class="input-field" id="qStatus"></select></div>
+            <div class="query-btns"><button class="query-reset-btn" onclick="resetQueryFilters()"><i class="fas fa-undo-alt"></i> 重置</button><button class="search-btn" onclick="querySuppliers()" style="flex:1;justify-content:center;display:flex;align-items:center;gap:6px;"><i class="fas fa-search"></i> 查询</button></div>
           </div>
+          <div class="query-result-head"><span><i class="fas fa-list-ul" style="color:#3b82f6;"></i> 查询结果</span><span class="query-result-count" id="qResultCount">0 家</span></div>
+          <div id="queryResultList"></div>
         </div>
-        <div class="tab-content" id="tab-log">
-          <div class="section-card"><div class="section-title"><i class="fas fa-history"></i> 更新日志 <span class="auto-badge">系统自动生成</span></div><div id="systemLogContainer"></div><p style="font-size:11px;color:#94a3b8;margin-top:10px;text-align:center;"><i class="fas fa-info-circle"></i> 更新日志由系统自动生成</p></div>
+        <div id="queryAiPanel" style="display:none;flex:1;overflow-y:auto;flex-direction:column;">
+          <div class="ai-chat-area" id="aiChatArea"></div>
+          <div class="ai-example-chips" id="aiExampleChips"></div>
+          <div class="ai-input-row"><div class="search-wrapper"><input class="search-input" id="aiQueryInput" placeholder="输入自然语言查询，如：广东地区供应小盘纸的供应商" onkeydown="if(event.key==='Enter')sendAiQuery()"></div><button class="search-btn" onclick="sendAiQuery()"><i class="fas fa-paper-plane"></i></button></div>
         </div>
-        <button class="submit-main-btn" onclick="submitSupplier()"><i class="fas fa-cloud-upload-alt"></i> 提交供应商档案</button>
+      </div>
+
+      <div class="page" id="supplierProfilePage">
+        <button class="back-btn" onclick="goBackToProfile()"><i class="fas fa-arrow-left"></i> 返回查询</button>
+        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;">供应商画像</span><span class="view-badge"><i class="fas fa-eye"></i> 只读档案</span></div>
+        <div style="flex:1;overflow-y:auto;">
+          <div class="profile-hero" id="profileHero"></div>
+          <div id="profileBasic"></div>
+          <div id="profileBusiness"></div>
+          <div id="profileOperation"></div>
+          <div id="profilePhotos"></div>
+          <div id="profileLogs"></div>
+          <button class="submit-main-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 12px 24px rgba(37,99,235,0.3);" onclick="goBackToProfile()"><i class="fas fa-arrow-left"></i> 返回查询结果</button>
+        </div>
+      </div>
+
+      <div class="page" id="supplierPage">
+        <button class="back-btn" id="supplierBackBtn" onclick="goBackToList()"><i class="fas fa-arrow-left"></i> <span id="supplierBackLabel">返回列表</span></button>
+        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;" id="supplierPageTitle">供应商维护</span><span class="view-badge" id="viewModeBadge" style="display:none;"><i class="fas fa-eye"></i> 画像查看</span></div>
+        <div class="current-version-bar"><span>📋 当前版本：<strong id="currentVersionLabel">V20250811-001</strong></span><button class="version-btn" onclick="showVersionHistory()"><i class="fas fa-history"></i> 历史版本</button></div>
+        <div class="tabs"><button class="tab active" onclick="switchTab('basic')">基础信息</button><button class="tab" onclick="switchTab('business')">工商信息</button><button class="tab" onclick="switchTab('operation')">经营信息</button><button class="tab" onclick="switchTab('photo')">现场照片</button><button class="tab" onclick="switchTab('log')">更新日志</button></div>
+        <div class="tab-content active" id="tab-basic"><div class="section-card"><div class="smart-row maintain-only"><span style="font-weight:600;font-size:13px;"><i class="fas fa-camera-retro" style="color:#f97316;"></i> 智能识别名片</span><button class="ocr-btn" onclick="openCamera()"><i class="fas fa-camera"></i> 拍照填入</button></div><div class="input-row"><div class="input-group"><span class="input-label">供应商编号</span><input class="input-field" placeholder="自动生成" id="supplierId"></div><div class="input-group"><span class="input-label">供应商名称</span><input class="input-field" placeholder="企业全称" id="supplierName"></div></div><div class="input-row"><div class="input-group"><span class="input-label">所属国家|地区</span><select class="input-field" id="country"><option value="">请选择</option><option>中国</option><option>美国</option><option>日本</option><option>韩国</option><option>德国</option><option>英国</option><option>法国</option><option>意大利</option><option>澳大利亚</option><option>其他</option></select></div><div class="input-group"><span class="input-label">所在城市</span><select class="input-field" id="city"><option value="">请选择</option><option>北京</option><option>上海</option><option>广州</option><option>深圳</option><option>杭州</option><option>南京</option><option>武汉</option><option>成都</option><option>重庆</option><option>厦门</option><option>青岛</option><option>泉州</option><option>东莞</option><option>其他</option></select></div></div><div class="input-group"><span class="input-label">详细地址</span><input class="input-field" placeholder="省市区/街道/门牌号" id="detailAddress"></div><div class="section-title" style="margin-top:8px;">联系人1</div><div class="input-row"><div class="input-group"><span class="input-label">姓名</span><input class="input-field" id="contact1"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" id="title1"></div></div><div class="input-row"><div class="input-group"><span class="input-label">联系电话</span><input class="input-field" id="phone1"></div><div class="input-group"><span class="input-label">邮箱</span><input class="input-field" id="email1"></div></div><div class="input-group"><span class="input-label">微信号</span><input class="input-field" id="wechat1"></div><div class="section-title" style="margin-top:8px;">联系人2</div><div class="input-row"><div class="input-group"><span class="input-label">姓名</span><input class="input-field" id="contact2"></div><div class="input-group"><span class="input-label">职位</span><input class="input-field" id="title2"></div></div><div class="input-row"><div class="input-group"><span class="input-label">联系电话</span><input class="input-field" id="phone2"></div><div class="input-group"><span class="input-label">邮箱</span><input class="input-field" id="email2"></div></div><div class="input-group"><span class="input-label">微信号</span><input class="input-field" id="wechat2"></div><div class="section-title" style="margin-top:8px;">其他联系方式</div><div class="input-group"><span class="input-label">自定义备注</span><textarea class="textarea-field" placeholder="其他联系方式、社媒账号等..." id="otherContact" style="min-height:50px;"></textarea></div><div class="input-group"><span class="input-label">官网|社媒地址</span><input class="input-field" placeholder="https://" id="website"></div><div class="input-group" style="margin-top:10px;"><span class="input-label">关联公司</span><input class="input-field" placeholder="关联企业/集团名称" id="relatedCompany"></div></div><button class="primary-btn maintain-only" onclick="saveSupplier()"><i class="fas fa-save"></i> 保存基础信息</button></div>
+        <div class="tab-content" id="tab-business"><div class="section-card"><div class="section-title"><i class="fas fa-building"></i> 工商信息 <span class="badge">启信宝/企查查</span></div><div class="input-group"><span class="input-label">统一社会信用代码</span><input class="input-field" placeholder="自动填入" id="creditCode" readonly></div><div class="input-row"><div class="input-group"><span class="input-label">法定代表人</span><input class="input-field" id="legalPerson" readonly></div><div class="input-group"><span class="input-label">注册资本</span><input class="input-field" id="regCapital" readonly></div></div><div class="input-row"><div class="input-group"><span class="input-label">成立年限</span><input class="input-field" id="establishYears" readonly></div><div class="input-group"><span class="input-label">公司类型</span><input class="input-field" id="companyType" readonly></div></div><div class="input-row"><div class="input-group"><span class="input-label">人员规模</span><input class="input-field" id="staffSize" readonly></div><div class="input-group"><span class="input-label">国标行业</span><input class="input-field" id="industry" readonly></div></div><div class="input-group"><span class="input-label">经营范围</span><textarea class="textarea-field" id="businessScope" readonly style="min-height:50px;"></textarea></div><button class="primary-btn maintain-only" onclick="fetchBusinessInfo()"><i class="fas fa-sync-alt"></i> 调用工商API自动填入</button><button class="primary-btn maintain-only" onclick="saveBusinessInfo()"><i class="fas fa-save"></i> 保存工商信息</button></div></div>
+        <div class="tab-content" id="tab-operation"><div class="section-card"><div class="section-title"><i class="fas fa-chart-line"></i> 经营信息 <span class="badge">AI解析生成</span><span class="visit-time-tag"><i class="fas fa-calendar-day"></i> 拜访时间：<strong id="opVisitTime">2025-08-10</strong></span></div><div class="input-group"><span class="input-label">📝 访谈描述</span><textarea class="textarea-field" placeholder="粘贴访谈记录，或上传文档自动解析..." id="interviewInput"></textarea></div><button class="file-upload-btn maintain-only" id="uploadDocBtn"><i class="fas fa-file-upload"></i> 上传文档 OCR 解析</button><div class="file-chips" id="fileChipsContainer"></div><button class="primary-btn maintain-only" style="margin-bottom:12px;" onclick="aiParseOperation()"><i class="fas fa-magic"></i> AI解析生成经营信息</button><div class="input-row"><div class="input-group"><span class="input-label">企业资质</span><input class="input-field" id="opQualification"></div><div class="input-group"><span class="input-label">认证体系</span><input class="input-field" id="opCertification"></div></div><div class="input-row"><div class="input-group"><span class="input-label">出口资质</span><input class="input-field" id="opExport"></div><div class="input-group"><span class="input-label">内部分级</span><select class="input-field" id="opGrade"><option value="">请选择</option><option>A级</option><option>B级</option><option>C级</option><option>D级</option></select></div></div><div class="input-row"><div class="input-group"><span class="input-label">是否涉风险名单</span><select class="input-field" id="opRisk"><option value="">请选择</option><option>是</option><option>否</option></select></div><div class="input-group"><span class="input-label">主营产品 <span class="badge" style="font-size:9px;">多选</span></span><div class="multi-select-wrapper" id="opMainProductWrapper"><div class="multi-select-display" onclick="toggleMultiSelect('opMainProduct')"><span id="opMainProductText">请选择主营产品</span><i class="fas fa-chevron-down"></i></div><div class="multi-select-dropdown" id="opMainProductDropdown"><label class="multi-option"><input type="checkbox" value="生活用纸" onchange="updateMultiSelect('opMainProduct')"> 生活用纸</label><label class="multi-option"><input type="checkbox" value="文化用纸" onchange="updateMultiSelect('opMainProduct')"> 文化用纸</label><label class="multi-option"><input type="checkbox" value="包装用纸" onchange="updateMultiSelect('opMainProduct')"> 包装用纸</label><label class="multi-option"><input type="checkbox" value="特种纸" onchange="updateMultiSelect('opMainProduct')"> 特种纸</label><label class="multi-option"><input type="checkbox" value="纸浆原料" onchange="updateMultiSelect('opMainProduct')"> 纸浆原料</label><label class="multi-option"><input type="checkbox" value="湿巾" onchange="updateMultiSelect('opMainProduct')"> 湿巾</label><label class="multi-option"><input type="checkbox" value="卫生巾" onchange="updateMultiSelect('opMainProduct')"> 卫生巾</label><label class="multi-option"><input type="checkbox" value="拉拉裤" onchange="updateMultiSelect('opMainProduct')"> 拉拉裤</label><label class="multi-option"><input type="checkbox" value="卫生护垫" onchange="updateMultiSelect('opMainProduct')"> 卫生护垫</label><label class="multi-option"><input type="checkbox" value="卷纸" onchange="updateMultiSelect('opMainProduct')"> 卷纸</label><label class="multi-option"><input type="checkbox" value="卫生纸" onchange="updateMultiSelect('opMainProduct')"> 卫生纸</label><label class="multi-option"><input type="checkbox" value="纸手帕" onchange="updateMultiSelect('opMainProduct')"> 纸手帕</label></div></div></div></div><div class="input-row"><div class="input-group"><span class="input-label">核心品类 <span class="badge" style="font-size:9px;">多选</span></span><div class="multi-select-wrapper" id="opCoreCategoryWrapper"><div class="multi-select-display" onclick="toggleMultiSelect('opCoreCategory')"><span id="opCoreCategoryText">请选择核心品类</span><i class="fas fa-chevron-down"></i></div><div class="multi-select-dropdown" id="opCoreCategoryDropdown"><label class="multi-option"><input type="checkbox" value="面巾纸" onchange="updateMultiSelect('opCoreCategory')"> 面巾纸</label><label class="multi-option"><input type="checkbox" value="卫生纸" onchange="updateMultiSelect('opCoreCategory')"> 卫生纸</label><label class="multi-option"><input type="checkbox" value="擦手纸" onchange="updateMultiSelect('opCoreCategory')"> 擦手纸</label><label class="multi-option"><input type="checkbox" value="厨房纸" onchange="updateMultiSelect('opCoreCategory')"> 厨房纸</label><label class="multi-option"><input type="checkbox" value="湿巾" onchange="updateMultiSelect('opCoreCategory')"> 湿巾</label><label class="multi-option"><input type="checkbox" value="卫生巾" onchange="updateMultiSelect('opCoreCategory')"> 卫生巾</label><label class="multi-option"><input type="checkbox" value="拉拉裤" onchange="updateMultiSelect('opCoreCategory')"> 拉拉裤</label><label class="multi-option"><input type="checkbox" value="卫生护垫" onchange="updateMultiSelect('opCoreCategory')"> 卫生护垫</label><label class="multi-option"><input type="checkbox" value="卷纸" onchange="updateMultiSelect('opCoreCategory')"> 卷纸</label><label class="multi-option"><input type="checkbox" value="纸手帕" onchange="updateMultiSelect('opCoreCategory')"> 纸手帕</label><label class="multi-option"><input type="checkbox" value="拷贝纸" onchange="updateMultiSelect('opCoreCategory')"> 拷贝纸</label><label class="multi-option"><input type="checkbox" value="牛皮纸" onchange="updateMultiSelect('opCoreCategory')"> 牛皮纸</label></div></div></div><div class="input-group"><span class="input-label">年产能规模</span><input class="input-field" id="opCapacity"></div></div><div class="input-row"><div class="input-group"><span class="input-label">厂房面积</span><input class="input-field" id="opFactoryArea"></div><div class="input-group"><span class="input-label">主要机台</span><input class="input-field" id="opMachine"></div></div><div class="input-row"><div class="input-group"><span class="input-label">是否有外贸经验</span><select class="input-field" id="opForeignTrade"><option value="">请选择</option><option>是</option><option>否</option></select></div><div class="input-group"><span class="input-label">外贸占比</span><input class="input-field" id="opForeignRatio" placeholder="如：60%"></div></div><div class="input-row"><div class="input-group"><span class="input-label">员工人数</span><input class="input-field" id="opEmployees"></div><div class="input-group"><span class="input-label">外贸团队规模</span><input class="input-field" id="opTradeTeam"></div></div><div class="input-row"><div class="input-group"><span class="input-label">主要外贸市场</span><input class="input-field" id="opMarket"></div><div class="input-group"><span class="input-label">主要服务客户</span><input class="input-field" id="opClients"></div></div><div class="input-row"><div class="input-group"><span class="input-label">最小起订量(MOQ)</span><input class="input-field" id="opMOQ"></div><div class="input-group"><span class="input-label">标准交货周期</span><input class="input-field" id="opDelivery"></div></div><div class="input-row"><div class="input-group"><span class="input-label">初始合作时间 <span class="auto-tag">系统自动</span></span><input type="date" class="input-field" id="opInitialDate" readonly style="background:#f1f5f9;color:#64748b;cursor:not-allowed;"></div><div class="input-group"><span class="input-label">合作年限 <span class="auto-tag">系统自动</span></span><input class="input-field" id="opCooperationYears" readonly style="background:#f1f5f9;color:#64748b;cursor:not-allowed;" placeholder="系统自动计算"></div></div><div class="input-row"><div class="input-group"><span class="input-label">历史累计订单量</span><input class="input-field" id="opOrderVolume"></div><div class="input-group"><span class="input-label">年采购额</span><input class="input-field" id="opAnnualPurchase"></div></div><div class="input-row"><div class="input-group"><span class="input-label">默认结算方式</span><input class="input-field" id="opSettlement"></div><div class="input-group"><span class="input-label">付款账期</span><input class="input-field" id="opPaymentTerms"></div></div><div class="input-row"><div class="input-group"><span class="input-label">历史履约评级</span><select class="input-field" id="opPerformance"><option value="">请选择</option><option>AAA</option><option>AA</option><option>A</option><option>B</option><option>C</option></select></div><div class="input-group"><span class="input-label">综合风险等级</span><select class="input-field" id="opRiskLevel"><option value="">请选择</option><option>守信激励对象</option><option>失信惩戒对象</option><option>正常</option></select></div></div><div class="input-row"><div class="input-group"><span class="input-label">交付风险</span><select class="input-field" id="opDeliveryRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div><div class="input-group"><span class="input-label">质量风险</span><select class="input-field" id="opQualityRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div></div><div class="input-row"><div class="input-group"><span class="input-label">结算风险</span><select class="input-field" id="opSettlementRisk"><option value="">请选择</option><option>极低</option><option>低</option><option>中</option><option>高</option></select></div><div class="input-group"><span class="input-label">国别风险</span><select class="input-field" id="opCountryRisk"><option value="">请选择</option><option>低</option><option>中</option><option>高</option></select></div></div><div class="input-row"><div class="input-group"><span class="input-label">核心优势</span><input class="input-field" id="opAdvantage"></div><div class="input-group"><span class="input-label">待改进点</span><input class="input-field" id="opImprovement"></div></div><button class="primary-btn maintain-only" onclick="saveOperationInfo()"><i class="fas fa-save"></i> 保存经营信息</button></div></div>
+        <div class="tab-content" id="tab-photo"><div class="section-card"><div class="section-title"><i class="fas fa-camera-retro" style="color:#f97316;"></i> 现场拜访照片 <span class="badge">实地走访</span></div><button class="file-upload-btn maintain-only" onclick="document.getElementById('hiddenPhotoInput').click()"><i class="fas fa-camera"></i> 拍照 / 上传现场照片</button><div id="pendingPhotoArea" style="display:none;"><div class="photo-section-label pending"><i class="fas fa-clock"></i> 待提交照片（随档案提交时一并上传）</div><div class="pending-photo-row" id="pendingPhotoRow"></div></div><div class="photo-section-label"><i class="fas fa-images"></i> 已上传照片 <span id="photoCountBadge" style="font-size:10px;font-weight:700;background:#e0e7ff;color:#3730a3;padding:2px 8px;border-radius:8px;margin-left:4px;">0</span></div><div id="photoHistoryList"></div><p style="font-size:11px;color:#94a3b8;margin-top:10px;line-height:1.5;"><i class="fas fa-info-circle"></i> 上传供应商生产车间、仓库、办公区等实地照片；新选照片需点击"提交照片"后归入下方已上传列表。</p></div></div>
+        <div class="tab-content" id="tab-log"><div class="section-card"><div class="section-title"><i class="fas fa-history"></i> 更新日志 <span class="auto-badge">系统自动生成</span></div><div id="systemLogContainer"></div><p style="font-size:11px;color:#94a3b8;margin-top:10px;text-align:center;"><i class="fas fa-info-circle"></i> 更新日志由系统自动生成</p></div></div>
+        <button class="submit-main-btn maintain-only" onclick="submitSupplier()"><i class="fas fa-cloud-upload-alt"></i> 提交供应商档案</button>
+      </div>
+
+      <div class="page" id="permissionPage">
+        <button class="back-btn" onclick="closePermissionPage()"><i class="fas fa-arrow-left"></i> 返回列表</button>
+        <div class="header" style="margin-bottom:8px;"><span style="font-weight:800;font-size:18px;color:#1e3a8a;">权限管理</span></div>
+        <div class="current-version-bar">
+          <span>🏢 <strong id="permSupplierName">供应商名称</strong></span>
+          <span style="font-size:11px;color:#64748b;" id="permSupplierCode"></span>
+        </div>
+        <div class="section-card">
+          <div class="section-title" style="margin-bottom:10px;">
+            <i class="fas fa-users"></i> 授权维护人员
+            <button class="perm-btn primary" style="margin-left:auto;" onclick="openStaffModal()"><i class="fas fa-plus"></i> 添加人员</button>
+          </div>
+          <div id="staffListContainer"></div>
+          <p style="font-size:11px;color:#94a3b8;margin-top:10px;line-height:1.5;"><i class="fas fa-info-circle"></i> 仅授权人员可维护该供应商档案，权限由纸品出口事业部领导审批开通。</p>
+        </div>
       </div>
     </div>
     <input type="file" id="hiddenDocInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.txt,.rtf" multiple style="display:none;">
-    <div class="camera-modal" id="cameraModal">
-      <div class="camera-viewfinder"><i class="fas fa-id-card" style="font-size:40px;color:#60a5fa;"></i><span>对准名片</span><span style="font-size:12px;color:#cbd5e1;">多模态视觉识别</span></div>
-      <div style="display:flex;gap:24px;"><div class="cam-btn" style="background:#ef4444;border-color:#fecaca;color:white;" onclick="closeCamera()"><i class="fas fa-times"></i></div><div class="cam-btn" onclick="captureCard()"><i class="fas fa-camera"></i></div></div>
-    </div>
-    <div class="modal-overlay" id="submitModal">
-      <div class="modal-box"><h4>📦 确认提交档案</h4><p id="submitModalMsg">确定将保存该供应商档案新版本至档案库吗？</p><div class="modal-btns"><button class="modal-btn cancel" onclick="closeSubmitModal()">取消</button><button class="modal-btn confirm" onclick="confirmSubmit()">确定提交</button></div></div>
-    </div>
+    <input type="file" id="hiddenPhotoInput" accept="image/*" multiple style="display:none;">
+    <div class="camera-modal" id="cameraModal"><div class="camera-viewfinder"><i class="fas fa-id-card" style="font-size:40px;color:#60a5fa;"></i><span>对准名片</span><span style="font-size:12px;color:#cbd5e1;">多模态视觉识别</span></div><div style="display:flex;gap:24px;"><div class="cam-btn" style="background:#ef4444;border-color:#fecaca;color:white;" onclick="closeCamera()"><i class="fas fa-times"></i></div><div class="cam-btn" onclick="captureCard()"><i class="fas fa-camera"></i></div></div></div>
+    <div class="modal-overlay" id="submitModal"><div class="modal-box"><h4>📦 确认提交档案</h4><p id="submitModalMsg">确定将保存该供应商档案新版本至档案库吗？</p><div class="modal-btns"><button class="modal-btn cancel" onclick="closeSubmitModal()">取消</button><button class="modal-btn confirm" onclick="confirmSubmit()">确定提交</button></div></div></div>
+    <div class="modal-overlay" id="versionModal"><div class="modal-box"><h4>📋 历史版本</h4><div id="versionListContainer" style="text-align:left;max-height:200px;overflow-y:auto;"></div><div class="modal-btns" style="margin-top:16px;"><button class="modal-btn cancel" onclick="closeVersionModal()">关闭</button></div></div></div>
+
+    <div class="modal-overlay" id="noPermModal"><div class="modal-box">
+      <div class="no-perm-icon"><i class="fas fa-lock"></i></div>
+      <h4>暂无维护权限</h4>
+      <p>您目前没有该供应商维护权限，请向纸品出口事业部领导申请</p>
+      <div class="modal-btns"><button class="modal-btn confirm" onclick="closeNoPermModal()">我知道了</button></div>
+    </div></div>
+
+    <div class="modal-overlay" id="staffModal"><div class="modal-box" style="width:300px;text-align:left;">
+      <h4 id="staffModalTitle" style="text-align:left;">添加授权人员</h4>
+      <div class="input-group"><span class="input-label">选择人员</span><select class="input-field" id="staffNameSelect" onchange="onStaffSelectChange()"></select></div>
+      <div class="input-group"><span class="input-label">所属部门</span><input class="input-field" id="staffDeptInput" placeholder="选择人员后自动带出" readonly style="background:#f1f5f9;color:#475569;"></div>
+      <div class="modal-btns" style="margin-top:16px;"><button class="modal-btn cancel" onclick="closeStaffModal()">取消</button><button class="modal-btn confirm" onclick="saveStaff()">保存</button></div>
+    </div></div>
+
+    <div class="modal-overlay" id="aiParseModal"><div class="modal-box" style="width:300px;text-align:left;">
+      <h4 style="text-align:left;">🤖 AI 解析经营信息</h4>
+      <p style="text-align:left;font-size:13px;color:#475569;margin-bottom:14px;line-height:1.5;">系统将根据已上传的访谈/工商文档自动识别经营信息并填入对应字段。</p>
+      <label style="display:flex;align-items:flex-start;gap:8px;padding:10px 12px;background:#f0f7ff;border-radius:12px;cursor:pointer;font-size:13px;font-weight:600;color:#1e3a8a;line-height:1.4;">
+        <input type="checkbox" id="overwriteBasicChk" style="accent-color:#2563eb;width:16px;height:16px;margin-top:2px;flex-shrink:0;">
+        <span>同时提取并覆盖「基础信息」页签字段（供应商名称、联系人、联系方式等）</span>
+      </label>
+      <div class="modal-btns" style="margin-top:16px;"><button class="modal-btn cancel" onclick="closeAiParseModal()">取消</button><button class="modal-btn confirm" onclick="doAiParse()">开始解析</button></div>
+    </div></div>
   </div>
   <script>
-    const allSuppliers = ['恒安纸业集团有限公司','维达纸业（中国）有限公司','清风纸业（华南）有限公司','中顺洁柔纸业股份有限公司','晨鸣纸业集团股份有限公司','金红叶纸业集团有限公司','东冠纸业有限公司','理文造纸有限公司','玖龙纸业有限公司','太阳纸业股份有限公司'];
-    const categoryData = [
-      { name: '湿巾', count: 42, color: '#3b82f6' },{ name: '卫生巾', count: 38, color: '#10b981' },{ name: '卫生纸', count: 35, color: '#06b6d4' },
-      { name: '拉拉裤', count: 31, color: '#f59e0b' },{ name: '卷纸', count: 29, color: '#ef4444' },{ name: '卫生护垫', count: 25, color: '#8b5cf6' },{ name: '纸手帕', count: 21, color: '#ec4899' }
-    ].sort((a,b) => b.count - a.count);
-
-    function renderCategoryList() {
-      const container = document.getElementById('categoryList');
-      const maxCount = categoryData[0]?.count || 1;
-      container.innerHTML = categoryData.map(item => {
-        const pct = Math.round((item.count / maxCount) * 100);
-        return `<div class="category-item"><span style="width:60px;">${item.name}</span><span style="width:28px;text-align:right;">${item.count}</span><div class="category-bar"><div class="category-fill" style="width:${pct}%;background:${item.color};"></div></div></div>`;
-      }).join('');
-    }
+    const categoryData = [{ name: '湿巾', count: 42, color: '#3b82f6' },{ name: '卫生巾', count: 38, color: '#10b981' },{ name: '卫生纸', count: 35, color: '#06b6d4' },{ name: '拉拉裤', count: 31, color: '#f59e0b' },{ name: '卷纸', count: 29, color: '#ef4444' },{ name: '卫生护垫', count: 25, color: '#8b5cf6' },{ name: '纸手帕', count: 21, color: '#ec4899' }].sort((a,b) => b.count - a.count);
+    function renderCategoryList() { const c=document.getElementById('categoryList'); const m=categoryData[0]?.count||1; c.innerHTML=categoryData.map(i=>`<div class="category-item"><span style="width:60px;">${i.name}</span><span style="width:28px;text-align:right;">${i.count}</span><div class="category-bar"><div class="category-fill" style="width:${Math.round(i.count/m*100)}%;background:${i.color};"></div></div></div>`).join(''); }
     renderCategoryList();
-
-    let selectedDocFiles = [], systemLogs = [], currentUser = '用户1', currentMode = 'add', pendingSubmit = null;
-    function getChinaTimeString() { const n=new Date(); const c=new Date(n.getTime()+8*60*60*1000+n.getTimezoneOffset()*60*1000); const p=(v)=>String(v).padStart(2,'0'); return `${c.getUTCFullYear()}-${p(c.getUTCMonth()+1)}-${p(c.getUTCDate())} ${p(c.getUTCHours())}:${p(c.getUTCMinutes())}`; }
-    function addSystemLog(a) { systemLogs.unshift({time:getChinaTimeString(),user:currentUser,action:'操作记录：'+a}); renderSystemLogs(); }
-    function renderSystemLogs() { const c=document.getElementById('systemLogContainer'); if(c) c.innerHTML=systemLogs.slice(0,20).map(l=>`<div class="log-item"><strong>${l.time}</strong> · <em>${l.user}</em> <span>${l.action}</span></div>`).join(''); }
-    function navigateTo(p) {
-      document.getElementById('homePage').classList.remove('active'); document.getElementById('supplierPage').classList.add('active');
+    let selectedDocFiles=[],systemLogs=[],currentUser='用户1',currentMode='add',pendingSubmit=null;
+    // 供应商维护权限：当前用户无权限的供应商名单（演示：清风纸业无权限）
+    const noPermissionSuppliers = ['清风纸业（华南）有限公司'];
+    // 每个供应商的授权人员列表（权限管理页数据）
+    // 员工主数据：选择人员后自动带出所属部门
+    const employeeList = [
+      { name: '郑晓峰', dept: '信息流程部' },
+      { name: '陈志远', dept: '纸品出口事业部' },
+      { name: '王磊',   dept: '采购部' },
+      { name: '陈静',   dept: '采购部' },
+      { name: '刘洋',   dept: '仓储物流部' },
+      { name: '周敏',   dept: '品质管理部' },
+      { name: '吴芳',   dept: '财务部' }
+    ];
+    const supplierStaffMap = {
+      '恒安纸业集团有限公司': [
+        { id: 1, name: '郑晓峰', dept: '信息流程部' },
+        { id: 2, name: '陈志远', dept: '纸品出口事业部' },
+        { id: 3, name: '王磊',   dept: '采购部' }
+      ],
+      '维达纸业（中国）有限公司': [
+        { id: 1, name: '郑晓峰', dept: '信息流程部' },
+        { id: 2, name: '陈静',   dept: '采购部' }
+      ],
+      '清风纸业（华南）有限公司': []
+    };
+    let permCurrentSupplier = '', permCurrentCode = '', editingStaffId = null;
+    // 字段修改对比：打开供应商详情时记录的原始值快照
+    let fieldSnapshot = {};
+    const versionData = { '恒安纸业集团有限公司': ['V20250811-001','V20250720-003','V20250615-002','V20250501-001'], '维达纸业（中国）有限公司': ['V20250720-003','V20250610-002','V20250415-001'], '清风纸业（华南）有限公司': ['V20250801-001','V20250710-002'] };
+    let currentSupplierName = '';
+    function getChinaTimeString(){const n=new Date();const c=new Date(n.getTime()+8*60*60*1000+n.getTimezoneOffset()*60*1000);const p=v=>String(v).padStart(2,'0');return `${c.getUTCFullYear()}-${p(c.getUTCMonth()+1)}-${p(c.getUTCDate())} ${p(c.getUTCHours())}:${p(c.getUTCMinutes())}`;}
+    function addSystemLog(a){systemLogs.unshift({time:getChinaTimeString(),user:currentUser,action:'操作记录：'+a});renderSystemLogs();}
+    function renderSystemLogs(){const c=document.getElementById('systemLogContainer');if(c)c.innerHTML=systemLogs.slice(0,20).map(l=>`<div class="log-item"><strong>${l.time}</strong> · <em>${l.user}</em> <span>${l.action}</span></div>`).join('');}
+    function toggleMultiSelect(f){const d=document.getElementById(f+'Dropdown');document.querySelectorAll('.multi-select-dropdown').forEach(x=>{if(x!==d)x.classList.remove('show');});d.classList.toggle('show');}
+    function updateMultiSelect(f){const d=document.getElementById(f+'Dropdown');const v=Array.from(d.querySelectorAll('input:checked')).map(c=>c.value);const t=document.getElementById(f+'Text');t.textContent=v.length===0?(f==='opMainProduct'?'请选择主营产品':'请选择核心品类'):(v.length<=3?v.join('、'):v.slice(0,3).join('、')+` 等${v.length}项`);let h=document.getElementById(f+'Hidden');if(!h){h=document.createElement('input');h.type='hidden';h.id=f+'Hidden';t.parentNode.appendChild(h);}h.value=v.join(',');
+      // 多选字段修改对比高亮
+      const wrapper=document.getElementById(f+'Wrapper');
+      if(wrapper && fieldSnapshot[f]!==undefined){
+        if(v.join(',')!==fieldSnapshot[f]) wrapper.classList.add('field-modified');
+        else wrapper.classList.remove('field-modified');
+      }
+    }
+    document.addEventListener('click',e=>{if(!e.target.closest('.multi-select-wrapper'))document.querySelectorAll('.multi-select-dropdown').forEach(d=>d.classList.remove('show'));});
+    function navigateTo(p){
+      if(p==='supplierAdd'){ document.getElementById('homePage').classList.remove('active'); document.getElementById('supplierPage').classList.add('active'); document.getElementById('supplierPageTitle').textContent='供应商新增'; currentMode='add'; clearForm(); addSystemLog('进入供应商新增页面'); }
+      else if(p==='supplierEdit'){ document.getElementById('homePage').classList.remove('active'); document.getElementById('supplierListPage').classList.add('active'); addSystemLog('进入供应商维护列表'); }
+      else if(p==='supplierQuery'){ document.getElementById('homePage').classList.remove('active'); document.getElementById('supplierQueryPage').classList.add('active'); addSystemLog('进入供应商查询'); }
       document.getElementById('appContainer').classList.remove('no-scroll');
-      document.getElementById('supplierPageTitle').textContent = p==='supplierAdd'?'供应商新增':'供应商维护';
-      document.getElementById('searchBox').style.display = p==='supplierEdit'?'flex':'none';
-      currentMode = p==='supplierAdd'?'add':'edit';
-      if(p==='supplierAdd') { clearForm(); addSystemLog('进入供应商新增页面'); } else { addSystemLog('进入供应商维护页面'); }
     }
-    function clearForm() {
-      document.querySelectorAll('#supplierPage .input-field').forEach(e=>{if(!e.readOnly&&e.tagName!=='SELECT')e.value='';});
-      document.querySelectorAll('#supplierPage textarea').forEach(e=>e.value='');
-      document.querySelectorAll('#supplierPage select').forEach(e=>e.value='');
+    function goBackToQuery(){ document.getElementById('supplierPage').classList.remove('active'); document.getElementById('supplierQueryPage').classList.add('active'); }
+    function goHome(){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); document.getElementById('homePage').classList.add('active'); document.getElementById('appContainer').classList.add('no-scroll'); }
+    function goBackToList(){ document.getElementById('supplierPage').classList.remove('active'); document.getElementById('supplierListPage').classList.add('active'); }
+    function openSupplierDetail(name,code,version){
+      // 权限检查：无维护权限时拦截并提示
+      if(noPermissionSuppliers.includes(name)){
+        document.getElementById('noPermModal').style.display='flex';
+        return;
+      }
+      setSupplierViewUI('maintain');
+      document.getElementById('supplierPageTitle').textContent='供应商维护';
+      loadSupplierData(name,code,version);
     }
-    function handleSearchInput() {
-      const kw = document.getElementById('supplierSearchInput').value.trim();
-      const box = document.getElementById('suggestionsBox');
-      if (kw.length < 1) { box.style.display = 'none'; return; }
-      const matches = allSuppliers.filter(s => s.toLowerCase().includes(kw.toLowerCase()));
-      if (matches.length === 0) { box.innerHTML = '<div class="suggestion-item" style="color:#94a3b8;">未找到匹配供应商</div>'; box.style.display = 'block'; return; }
-      box.innerHTML = matches.map(m => `<div class="suggestion-item" onclick="selectSuggestion('${m}')">${m}</div>`).join('');
-      box.style.display = 'block';
+    function loadSupplierData(name,code,version){
+      currentSupplierName=name; document.getElementById('supplierListPage').classList.remove('active'); document.getElementById('supplierPage').classList.add('active');
+      document.getElementById('supplierId').value=code; document.getElementById('supplierName').value=name;
+      document.getElementById('currentVersionLabel').textContent=version; document.getElementById('country').value='中国'; document.getElementById('city').value='泉州';
+      document.getElementById('detailAddress').value='福建省泉州市晋江市纸业路88号'; document.getElementById('relatedCompany').value='恒安集团（中国）有限公司';
+      document.getElementById('contact1').value='陈雅琳'; document.getElementById('title1').value='采购总监'; document.getElementById('phone1').value='139****2210'; document.getElementById('email1').value='ychen@paper.com'; document.getElementById('wechat1').value='paper_yachen'; document.getElementById('website').value='https://www.paperexample.com';
+      // 经营信息预填演示数据
+      document.getElementById('opForeignTrade').value='是'; document.getElementById('opForeignRatio').value='60%'; document.getElementById('opInitialDate').value='2017-05-12'; document.getElementById('opCooperationYears').value='8年';
+      addSystemLog(`加载供应商"${name}"，版本${version}`);
+      // 记录字段原始值快照，用于修改前后对比高亮
+      snapshotFields();
     }
-    function selectSuggestion(name) {
-      document.getElementById('supplierSearchInput').value = name;
-      document.getElementById('suggestionsBox').style.display = 'none';
-      searchSupplier();
+    function closeNoPermModal(){ document.getElementById('noPermModal').style.display='none'; }
+    // 字段快照与修改对比高亮
+    function snapshotFields(){
+      fieldSnapshot={};
+      clearFieldModified();
+      document.querySelectorAll('#supplierPage .input-field, #supplierPage textarea').forEach(el=>{
+        if(el.id){ fieldSnapshot[el.id]=el.value; el.oninput=()=>trackFieldChange(el); el.onchange=()=>trackFieldChange(el); }
+      });
+      // 多选组件记录初始值
+      ['opMainProduct','opCoreCategory'].forEach(f=>{
+        const h=document.getElementById(f+'Hidden');
+        fieldSnapshot[f]=h?h.value:'';
+      });
     }
-    function searchSupplier() {
-      const kw=document.getElementById('supplierSearchInput').value.trim(); if(!kw){alert('请输入供应商名称');return;}
-      document.getElementById('supplierName').value=kw; document.getElementById('supplierId').value='SUP-'+Math.floor(Math.random()*9000+1000);
-      document.getElementById('country').value='中国'; document.getElementById('city').value='泉州市';
-      document.getElementById('contact1').value='陈雅琳'; document.getElementById('title1').value='采购总监';
-      document.getElementById('phone1').value='139****2210'; document.getElementById('email1').value='ychen@paper.com'; document.getElementById('wechat1').value='paper_yachen';
-      document.getElementById('website').value='https://www.paperexample.com';
-      document.getElementById('suggestionsBox').style.display = 'none';
-      addSystemLog(`搜索供应商"${kw}"，加载最新版本V20250717-001`); alert('✅ 已加载最新版本 V20250717-001');
+    function clearFieldModified(){
+      document.querySelectorAll('#supplierPage .field-modified').forEach(g=>g.classList.remove('field-modified'));
+      document.querySelectorAll('#supplierPage .old-value-hint').forEach(h=>h.remove());
     }
-    function showVersionHistory() {
-      const name=document.getElementById('supplierSearchInput').value||'当前供应商';
-      alert(`📋 ${name} 历史版本：\nV20250717-001 (最新)\nV20250620-003\nV20250515-002\nV20250401-001\n点击任意版本可回滚查看`);
+    function trackFieldChange(el){
+      const group=el.closest('.input-group'); if(!group) return;
+      const oldVal=fieldSnapshot[el.id]!==undefined?fieldSnapshot[el.id]:'';
+      const newVal=el.value;
+      if(newVal!==oldVal){
+        group.classList.add('field-modified');
+        let hint=group.querySelector('.old-value-hint');
+        if(!hint){ hint=document.createElement('div'); hint.className='old-value-hint'; group.appendChild(hint); }
+        const oldShow=oldVal===''?'（空）':oldVal;
+        hint.innerHTML=`原值：<s>${oldShow}</s> → <span class="new-value-tag">${newVal===''?'（空）':newVal}</span>`;
+      } else {
+        group.classList.remove('field-modified');
+        const hint=group.querySelector('.old-value-hint'); if(hint) hint.remove();
+      }
     }
-    document.addEventListener('click', function(e) { if (!e.target.closest('.search-wrapper')) document.getElementById('suggestionsBox').style.display = 'none'; });
-    function goHome() { document.getElementById('supplierPage').classList.remove('active'); document.getElementById('homePage').classList.add('active'); document.getElementById('appContainer').classList.add('no-scroll'); }
-    function switchTab(t) { document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active')); document.getElementById('tab-'+t).classList.add('active'); event.target.classList.add('active'); }
-    function showComingSoon(f) { alert(f+' 即将上线'); }
-    function openCamera() { document.getElementById('cameraModal').style.display='flex'; }
-    function closeCamera() { document.getElementById('cameraModal').style.display='none'; }
-    function captureCard() { closeCamera(); document.getElementById('supplierName').value='清风纸业（华南）有限公司'; document.getElementById('contact1').value='林婉如'; document.getElementById('title1').value='供应链经理'; document.getElementById('phone1').value='188****5623'; document.getElementById('email1').value='linwr@qingfeng.com'; document.getElementById('wechat1').value='paper_linwr'; document.getElementById('website').value='https://www.qingfengpaper.com'; addSystemLog('名片识别完成'); alert('📷 名片识别完成'); }
+    // 自动填值（拍照/API/AI解析）后，重新对比所有字段并高亮变化
+    function compareAllFields(){
+      document.querySelectorAll('#supplierPage .input-field, #supplierPage textarea').forEach(el=>{
+        if(el.id) trackFieldChange(el);
+      });
+      ['opMainProduct','opCoreCategory'].forEach(f=>{
+        const h=document.getElementById(f+'Hidden');
+        const wrapper=document.getElementById(f+'Wrapper');
+        if(wrapper && fieldSnapshot[f]!==undefined){
+          const cur=h?h.value:'';
+          if(cur!==fieldSnapshot[f]) wrapper.classList.add('field-modified');
+          else wrapper.classList.remove('field-modified');
+        }
+      });
+    }
+    function handleListSearch(){ const kw=document.getElementById('listSearchInput').value.trim(); const box=document.getElementById('listSuggestionsBox'); if(kw.length<1){box.style.display='none';return;} box.innerHTML='<div class="suggestion-item">搜索结果由后端返回</div>'; box.style.display='block'; }
+    function searchSupplierList(){ alert('搜索完成（演示模式）'); document.getElementById('listSuggestionsBox').style.display='none'; }
+    function showVersionHistory(){
+      const versions=versionData[currentSupplierName]||['V20250811-001','V20250720-003'];
+      document.getElementById('versionListContainer').innerHTML=versions.map(v=>`<div class="list-item" style="margin-bottom:4px;" onclick="switchVersion('${v}')"><span style="font-weight:600;">${v}</span><span style="font-size:11px;color:#94a3b8;">${v===versions[0]?'（当前）':''}</span></div>`).join('');
+      document.getElementById('versionModal').style.display='flex';
+    }
+    function switchVersion(v){ document.getElementById('currentVersionLabel').textContent=v; closeVersionModal(); addSystemLog(`切换至版本${v}`); alert(`✅ 已切换至版本 ${v}，数据已加载`); }
+    function closeVersionModal(){ document.getElementById('versionModal').style.display='none'; }
+    function clearForm(){ document.querySelectorAll('#supplierPage .input-field').forEach(e=>{if(!e.readOnly&&e.tagName!=='SELECT')e.value='';}); document.querySelectorAll('#supplierPage textarea').forEach(e=>e.value=''); document.querySelectorAll('#supplierPage select').forEach(e=>e.value=''); clearFieldModified(); fieldSnapshot={}; }
+    function switchTab(t){ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active')); document.getElementById('tab-'+t).classList.add('active'); event.target.classList.add('active'); }
+    function showComingSoon(f){ alert(f+' 即将上线'); }
+    // ===== 供应商查询板块 =====
+    let supplierViewMode='maintain';
+    function setSupplierViewUI(mode){
+      supplierViewMode=mode;
+      document.getElementById('supplierPage').classList.toggle('view-mode', mode==='view');
+      document.getElementById('viewModeBadge').style.display=mode==='view'?'inline-block':'none';
+      const btn=document.getElementById('supplierBackBtn');
+      btn.setAttribute('onclick', mode==='view'?'goBackToQuery()':'goBackToList()');
+      document.getElementById('supplierBackLabel').textContent=mode==='view'?'返回查询':'返回列表';
+    }
+    function goBackToProfile(){ document.getElementById('supplierProfilePage').classList.remove('active'); document.getElementById('supplierQueryPage').classList.add('active'); }
+    // 只渲染有内容的字段
+    function pf(label,value,full){
+      if(value===undefined||value===null||value===''||(Array.isArray(value)&&value.length===0)) return '';
+      if(Array.isArray(value)) value=value.map(v=>`<span class="query-tag">${v}</span>`).join('');
+      return `<div class="profile-field${full?' full':''}"><span class="profile-label">${label}</span><span class="profile-value">${value}</span></div>`;
+    }
+    function renderProfileSection(title,icon,fieldsHtml){
+      return `<div class="section-card profile-section"><div class="section-title"><i class="fas ${icon}" style="color:#3b82f6;"></i> ${title}</div><div class="profile-grid">${fieldsHtml}</div></div>`;
+    }
+    function openSupplierProfile(name,code,version){
+      const rec=supplierDataset.find(x=>x.name===name);
+      const prof=supplierProfiles[name]||{};
+      const b=prof.basic||{}, biz=prof.business||{}, op=prof.operation||{}, contact=b.contact||{};
+      // 顶部主卡
+      const categories=(rec?rec.categories:[]).map(c=>`<span class="query-tag">${c}</span>`).join('');
+      document.getElementById('profileHero').innerHTML=`
+        <div class="profile-hero-top">
+          <div><div class="profile-hero-name">${name}</div><div class="profile-hero-code">${code} · ${version}</div></div>
+          <span class="status-badge ${rec&&rec.status==='正常合作'?'ok':'off'}">${rec?rec.status:'-'}</span>
+        </div>
+        ${categories?`<div class="profile-hero-tags">${categories}</div>`:''}
+        <div class="profile-hero-meta">
+          ${rec&&rec.region?`<span><i class="fas fa-map-marker-alt"></i> ${rec.region}·${rec.province}${rec.city}</span>`:''}
+          ${rec&&rec.contact?`<span><i class="fas fa-user"></i> 联系人 ${rec.contact}</span>`:''}
+          ${op.visitTime?`<span><i class="fas fa-calendar-check"></i> 最近拜访 ${op.visitTime}</span>`:''}
+        </div>`;
+      // 基础信息
+      const basicHtml=pf('所属国家|地区',b.country)+pf('所在城市',b.city)+pf('详细地址',b.detailAddress,true)
+        +pf('联系人',contact.name?(contact.name+(contact.title?'（'+contact.title+'）':'')):'')
+        +pf('联系电话',contact.phone)+pf('邮箱',contact.email)+pf('微信号',contact.wechat)
+        +pf('官网|社媒地址',b.website,true)+pf('关联公司',b.relatedCompany,true);
+      document.getElementById('profileBasic').innerHTML=basicHtml?renderProfileSection('基础信息','fa-id-card',basicHtml):'';
+      // 工商信息
+      const bizHtml=pf('统一社会信用代码',biz.creditCode)+pf('法定代表人',biz.legalPerson)+pf('注册资本',biz.regCapital)
+        +pf('成立年限',biz.establishYears)+pf('公司类型',biz.companyType)+pf('人员规模',biz.staffSize)
+        +pf('国标行业',biz.industry)+pf('经营范围',biz.businessScope,true);
+      document.getElementById('profileBusiness').innerHTML=bizHtml?renderProfileSection('工商信息','fa-building',bizHtml):'';
+      // 经营信息
+      const opHtml=pf('拜访时间',op.visitTime)+pf('企业资质',op.qualification)+pf('认证体系',op.certification)
+        +pf('出口资质',op.export)+pf('内部分级',op.grade)+pf('是否涉风险名单',op.riskList)
+        +pf('主营产品',op.mainProduct)+pf('核心品类',op.coreCategory)+pf('年产能规模',op.capacity)
+        +pf('厂房面积',op.factoryArea)+pf('主要机台',op.machine)+pf('是否有外贸经验',op.foreignTrade)
+        +pf('外贸占比',op.foreignRatio)+pf('员工人数',op.employees)+pf('外贸团队规模',op.tradeTeam)
+        +pf('主要外贸市场',op.market,true)+pf('主要服务客户',op.clients,true)+pf('最小起订量',op.moq)
+        +pf('标准交货周期',op.deliveryCycle)+pf('初始合作时间',op.initialDate)+pf('合作年限',op.cooperationYears)
+        +pf('历史累计订单量',op.orderVolume)+pf('年采购额',op.annualPurchase)+pf('默认结算方式',op.settlement)
+        +pf('付款账期',op.paymentTerms)+pf('历史履约评级',op.performance)+pf('综合风险等级',op.riskLevel)
+        +pf('交付风险',op.deliveryRisk)+pf('质量风险',op.qualityRisk)+pf('结算风险',op.settlementRisk)
+        +pf('国别风险',op.countryRisk)+pf('核心优势',op.advantage,true)+pf('待改进点',op.improvement,true);
+      document.getElementById('profileOperation').innerHTML=opHtml?renderProfileSection('经营信息','fa-chart-line',opHtml):'';
+      // 现场照片
+      const photos=prof.photos||[];
+      document.getElementById('profilePhotos').innerHTML=photos.length
+        ?`<div class="section-card profile-section"><div class="section-title"><i class="fas fa-camera-retro" style="color:#f97316;"></i> 现场拜访照片 <span class="badge">实地走访</span></div>${photos.map(p=>`<div class="photo-history-item"><img src="${sampleSvg}"><div class="photo-history-info"><div class="photo-history-name">${p.name}</div><div class="photo-history-time"><i class="far fa-clock"></i> ${p.time}</div></div></div>`).join('')}</div>`:'';
+      // 历史操作日志
+      const logs=prof.logs||[];
+      document.getElementById('profileLogs').innerHTML=logs.length
+        ?`<div class="section-card profile-section"><div class="section-title"><i class="fas fa-history"></i> 历史操作日志 <span class="auto-badge">系统记录</span></div>${logs.map(l=>`<div class="log-item"><strong>${l.time}</strong> · <em>${l.user}</em> <span>${l.action}</span></div>`).join('')}</div>`:'';
+      document.getElementById('supplierQueryPage').classList.remove('active');
+      document.getElementById('supplierProfilePage').classList.add('active');
+      addSystemLog(`查询穿透查看供应商画像"${name}"`);
+    }
+    // 查询数据集（演示数据）
+    const supplierDataset = [
+      { name:'恒安纸业集团有限公司', code:'SUP-1001', version:'V20250811-001', categories:['生活用纸','卫生纸','湿巾'], region:'华南', province:'福建', city:'泉州', contact:'陈雅琳', status:'正常合作' },
+      { name:'维达纸业（中国）有限公司', code:'SUP-1002', version:'V20250720-003', categories:['生活用纸','卷纸','卫生纸'], region:'华南', province:'广东', city:'江门', contact:'林海', status:'正常合作' },
+      { name:'清风纸业（华南）有限公司', code:'SUP-1003', version:'V20250801-001', categories:['抽纸','湿巾','厨房纸'], region:'华南', province:'广东', city:'广州', contact:'林婉如', status:'正常合作' },
+      { name:'中顺洁柔纸业股份有限公司', code:'SUP-1004', version:'V20250618-002', categories:['生活用纸','卫生纸'], region:'华南', province:'广东', city:'中山', contact:'王磊', status:'正常合作' },
+      { name:'东泰纸品包装有限公司', code:'SUP-1005', version:'V20250302-001', categories:['纸袋','纸盒','包装用纸'], region:'华东', province:'浙江', city:'嘉兴', contact:'陈静', status:'已停用' },
+      { name:'金红叶纸业集团有限公司', code:'SUP-1006', version:'V20250410-002', categories:['生活用纸','纸杯'], region:'华东', province:'江苏', city:'苏州', contact:'刘洋', status:'正常合作' },
+      { name:'中纸宏泰包装科技有限公司', code:'SUP-1007', version:'V20250805-001', categories:['小盘纸','纸托','纸塑'], region:'华北', province:'天津', city:'天津', contact:'周敏', status:'正常合作' },
+      { name:'蓝月亮纸品（东莞）有限公司', code:'SUP-1008', version:'V20250115-001', categories:['湿巾','小盘纸','擦手纸'], region:'华南', province:'广东', city:'东莞', contact:'吴芳', status:'已停用' }
+    ];
+    // 画像档案演示数据（留空字段在画像页自动隐藏）
+    const supplierProfiles = {
+      '恒安纸业集团有限公司': {
+        basic:{ country:'中国', city:'泉州', detailAddress:'福建省泉州市晋江市纸业路88号', contact:{ name:'陈雅琳', title:'采购总监', phone:'139****2210', email:'ychen@paper.com', wechat:'paper_yachen' }, website:'https://www.paperexample.com', relatedCompany:'恒安集团（中国）有限公司' },
+        business:{ creditCode:'91350500MA32TQHXX8', legalPerson:'施文博', regCapital:'50000万人民币', establishYears:'40年', companyType:'有限责任公司', staffSize:'3500人', industry:'造纸和纸制品业', businessScope:'生产生活用纸、文化用纸等。' },
+        operation:{ visitTime:'2025-08-10', qualification:'FSC认证,BSCI认证', certification:'ISO 14001', export:'海关备案登记', grade:'A级', riskList:'否', mainProduct:['生活用纸','湿巾'], coreCategory:['面巾纸','卫生纸','湿巾'], capacity:'年产约1800个柜', factoryArea:'39500平方米', machine:'16条宝索生产线', foreignTrade:'是', foreignRatio:'60%', employees:'150人', tradeTeam:'20人', market:'日本、沙特、美国、澳洲', clients:'清风、洁柔、日本Daiso', moq:'常规产品至少1-2个柜子', deliveryCycle:'20天', initialDate:'2017-05-12', cooperationYears:'8年', orderVolume:'1200单', annualPurchase:'2.5亿', settlement:'30%定金，装柜出货前付余款', paymentTerms:'30%定金，装柜出货前付余款', performance:'AAA', riskLevel:'守信激励对象', deliveryRisk:'低', qualityRisk:'低', settlementRisk:'极低', countryRisk:'低', advantage:'产能较大，订单保障性强，管理规范，品类齐全', improvement:'订单要求较高，不利于小批量合作' },
+        photos:[ { name:'生产车间外景.jpg', time:'2025-08-10 14:23' }, { name:'成品仓库.jpg', time:'2025-08-10 15:02' } ],
+        logs:[ { time:'2025-08-11', user:'陈志远', action:'提交档案版本 V20250811-001' }, { time:'2025-08-10', user:'郑晓峰', action:'经营信息AI解析完成，更新拜访时间' }, { time:'2025-07-20', user:'王磊', action:'更新工商信息' }, { time:'2025-06-15', user:'系统', action:'创建供应商档案 V20250615-002' } ]
+      },
+      '维达纸业（中国）有限公司': {
+        basic:{ country:'中国', city:'江门', detailAddress:'广东省江门市新会区会城街道维达路1号', contact:{ name:'林海', title:'供应链总监', phone:'138****6688', email:'linhai@vinda.com', wechat:'vinda_linhai' }, website:'https://www.vinda.com', relatedCompany:'维达国际控股有限公司' },
+        business:{ creditCode:'91440700MA4X9QKJX3', legalPerson:'李洁琳', regCapital:'80000万人民币', establishYears:'32年', companyType:'有限责任公司（港澳台投资）', staffSize:'4200人', industry:'造纸和纸制品业', businessScope:'生产经营生活用纸、湿巾、卫生巾等。' },
+        operation:{ visitTime:'2025-07-20', qualification:'FSC认证', certification:'ISO 14001', export:'海关备案登记', grade:'A级', riskList:'否', mainProduct:['生活用纸','卷纸','卫生纸'], coreCategory:['面巾纸','卷纸'], capacity:'年产约2500个柜', factoryArea:'52000平方米', machine:'维美德高速纸机6台', foreignTrade:'是', foreignRatio:'45%', employees:'4200人', tradeTeam:'35人', market:'东南亚、中东、欧美', clients:'家乐福、永旺、大润发', moq:'1个柜', deliveryCycle:'15-20天', initialDate:'2019-03-08', cooperationYears:'6年', orderVolume:'860单', annualPurchase:'1.8亿', settlement:'T/T', paymentTerms:'月结60天', performance:'AA', riskLevel:'正常', deliveryRisk:'低', qualityRisk:'低', settlementRisk:'低', countryRisk:'低', advantage:'品牌知名度高，产能稳定', improvement:'旺季排产紧张' },
+        photos:[],
+        logs:[ { time:'2025-07-20', user:'陈志远', action:'提交档案版本 V20250720-003' }, { time:'2025-06-10', user:'陈静', action:'更新经营信息外贸占比' }, { time:'2025-04-15', user:'系统', action:'创建供应商档案 V20250415-001' } ]
+      },
+      '清风纸业（华南）有限公司': {
+        basic:{ country:'中国', city:'广州', detailAddress:'广东省广州市黄埔区科学城莲花大道88号', contact:{ name:'林婉如', title:'供应链经理', phone:'188****5623', email:'linwr@qingfeng.com', wechat:'paper_linwr' }, website:'https://www.qingfengpaper.com', relatedCompany:'清风集团股份有限公司' },
+        business:{},
+        operation:{ visitTime:'2025-08-01', qualification:'ISO 9001', certification:'', export:'海关备案登记', grade:'B级', riskList:'否', mainProduct:['抽纸','湿巾','厨房纸'], coreCategory:['抽纸','厨房纸'], capacity:'年产约900个柜', factoryArea:'28000平方米', machine:'宝索生产线8条', foreignTrade:'是', foreignRatio:'30%', employees:'260人', tradeTeam:'10人', market:'东南亚', clients:'名创优品、无印良品', moq:'1个柜', deliveryCycle:'25天', initialDate:'2021-09-01', cooperationYears:'4年', orderVolume:'430单', annualPurchase:'8000万', settlement:'30%定金', paymentTerms:'出货前付清', performance:'A', riskLevel:'正常', deliveryRisk:'中', qualityRisk:'低', settlementRisk:'低', countryRisk:'低', advantage:'品类齐全，响应速度快', improvement:'产能规模中等' },
+        photos:[ { name:'广州工厂大门.jpg', time:'2025-08-01 10:30' } ],
+        logs:[ { time:'2025-08-01', user:'郑晓峰', action:'提交档案版本 V20250801-001' }, { time:'2025-07-10', user:'王磊', action:'现场拜访并拍照' }, { time:'2025-07-10', user:'系统', action:'创建供应商档案 V20250710-002' } ]
+      },
+      '中顺洁柔纸业股份有限公司': {
+        basic:{ country:'中国', city:'中山', detailAddress:'广东省中山市火炬开发区康乐大道8号', contact:{ name:'王磊', title:'采购专员', phone:'159****3301', email:'wanglei@jierou.com' }, relatedCompany:'中顺洁柔纸业股份有限公司' },
+        business:{ creditCode:'91442000MA51KLPP9R', legalPerson:'刘鹏', regCapital:'130000万人民币', establishYears:'25年', companyType:'股份有限公司', staffSize:'5200人', industry:'造纸和纸制品业' },
+        operation:{ visitTime:'2025-06-18', qualification:'FSC认证', export:'海关备案登记', grade:'B级', riskList:'否', mainProduct:['生活用纸','卫生纸'], coreCategory:['卫生纸'], capacity:'年产约2000个柜', foreignTrade:'是', foreignRatio:'25%', employees:'5200人', market:'日本、韩国', clients:'屈臣氏、华润万家', moq:'2个柜', settlement:'T/T', paymentTerms:'月结30天', performance:'AA', riskLevel:'正常', deliveryRisk:'低', qualityRisk:'低', settlementRisk:'中', countryRisk:'低', advantage:'规模大，产能充足', improvement:'新客户起订量门槛高' },
+        photos:[],
+        logs:[ { time:'2025-06-18', user:'陈静', action:'提交档案版本 V20250618-002' }, { time:'2025-06-18', user:'系统', action:'创建供应商档案' } ]
+      },
+      '东泰纸品包装有限公司': {
+        basic:{ country:'中国', city:'嘉兴', detailAddress:'浙江省嘉兴市平湖经济技术开发区兴平二路56号', contact:{ name:'陈静', title:'业务经理', phone:'137****9902', email:'chenjing@dongtai.com' }, website:'https://www.dongtaipack.com', relatedCompany:'东泰控股集团' },
+        business:{ creditCode:'91330482MA2B7XQHX6', legalPerson:'沈建平', regCapital:'6000万人民币', establishYears:'15年', companyType:'有限责任公司', staffSize:'380人', industry:'纸制品制造', businessScope:'纸盒、纸袋、纸罐等纸包装制品制造与销售。' },
+        operation:{ visitTime:'2025-03-02', qualification:'ISO 9001', export:'', grade:'C级', riskList:'否', mainProduct:['纸袋','纸盒','包装用纸'], coreCategory:['纸袋'], capacity:'年产约300万个纸袋', factoryArea:'18000平方米', machine:'糊盒机6台、覆膜机2台', foreignTrade:'否', foreignRatio:'', employees:'380人', tradeTeam:'5人', market:'', clients:'安踏、鸿星尔克', moq:'5000个', deliveryCycle:'30天', initialDate:'2022-01-10', cooperationYears:'3年', orderVolume:'120单', annualPurchase:'3000万', settlement:'月结', paymentTerms:'月结30天', performance:'B', riskLevel:'正常', deliveryRisk:'中', qualityRisk:'中', settlementRisk:'中', countryRisk:'低', advantage:'包装类产品线完整', improvement:'设备老化，交付周期偏长' },
+        photos:[],
+        logs:[ { time:'2025-03-02', user:'系统', action:'提交档案版本 V20250302-001' }, { time:'2025-03-01', user:'刘洋', action:'合作状态标记为已停用' }, { time:'2024-12-18', user:'系统', action:'创建供应商档案' } ]
+      },
+      '金红叶纸业集团有限公司': {
+        basic:{ country:'中国', city:'苏州', detailAddress:'江苏省苏州市工业园区阳澄湖大道99号', contact:{ name:'刘洋', title:'采购经理', phone:'136****5521', email:'liuyang@jhy.com' } },
+        business:{ creditCode:'91320594MA1W1KPA3H', legalPerson:'黄志源', regCapital:'90000万人民币', establishYears:'28年', companyType:'有限责任公司', staffSize:'4500人', industry:'造纸和纸制品业' },
+        operation:{ visitTime:'2025-04-10', qualification:'FSC认证', certification:'ISO 14001', export:'海关备案登记', grade:'A级', riskList:'否', mainProduct:['生活用纸','纸杯'], coreCategory:['生活用纸'], capacity:'年产约2200个柜', factoryArea:'48000平方米', foreignTrade:'是', foreignRatio:'50%', employees:'4500人', tradeTeam:'28人', market:'日韩、东南亚、欧美', clients:'宜家、优衣库', moq:'1个柜', deliveryCycle:'18天', initialDate:'2020-06-01', cooperationYears:'5年', orderVolume:'650单', annualPurchase:'1.2亿', settlement:'T/T', paymentTerms:'月结45天', performance:'AA', riskLevel:'守信激励对象', deliveryRisk:'低', qualityRisk:'低', settlementRisk:'低', countryRisk:'低', advantage:'出口经验丰富，管理规范', improvement:'无' },
+        photos:[],
+        logs:[ { time:'2025-04-10', user:'陈志远', action:'提交档案版本 V20250410-002' }, { time:'2025-03-20', user:'王磊', action:'经营信息AI解析完成' } ]
+      },
+      '中纸宏泰包装科技有限公司': {
+        basic:{ country:'中国', city:'天津', detailAddress:'天津市武清区京滨工业园宏泰路1号', contact:{ name:'周敏', title:'销售总监', phone:'133****7789', email:'zhoumin@hongtai.com', wechat:'ht_zhoumin' }, website:'https://www.zzhongtai.com', relatedCompany:'中纸宏泰集团' },
+        business:{ creditCode:'91120222MA05KQPP4F', legalPerson:'赵宏', regCapital:'8000万人民币', establishYears:'12年', companyType:'有限责任公司', staffSize:'420人', industry:'纸制品制造', businessScope:'小盘纸、纸托、纸塑制品的研发、生产与销售。' },
+        operation:{ visitTime:'2025-08-05', qualification:'ISO 9001', certification:'', export:'', grade:'B级', riskList:'否', mainProduct:['小盘纸','纸托','纸塑'], coreCategory:['小盘纸'], capacity:'年产约60万箱小盘纸', factoryArea:'22000平方米', machine:'成型机15台、冲压线3条', foreignTrade:'是', foreignRatio:'40%', employees:'420人', tradeTeam:'8人', market:'北美、欧洲', clients:'好时、卡夫', moq:'1个柜', deliveryCycle:'22天', initialDate:'2022-08-15', cooperationYears:'3年', orderVolume:'210单', annualPurchase:'4500万', settlement:'T/T', paymentTerms:'预付30%，余款出货前付清', performance:'A', riskLevel:'正常', deliveryRisk:'中', qualityRisk:'低', settlementRisk:'中', countryRisk:'低', advantage:'小盘纸细分领域专业，出口稳定', improvement:'产品品类较单一' },
+        photos:[],
+        logs:[ { time:'2025-08-05', user:'郑晓峰', action:'提交档案版本 V20250805-001' }, { time:'2025-08-05', user:'系统', action:'创建供应商档案' } ]
+      },
+      '蓝月亮纸品（东莞）有限公司': {
+        basic:{ country:'中国', city:'东莞', detailAddress:'广东省东莞市石碣镇科技中路28号', contact:{ name:'吴芳', title:'总经理', phone:'158****4412', email:'wufang@bluemoon-paper.com' } },
+        business:{},
+        operation:{ visitTime:'2025-01-15', qualification:'', certification:'', export:'海关备案登记', grade:'C级', riskList:'否', mainProduct:['湿巾','小盘纸','擦手纸'], coreCategory:['湿巾','小盘纸'], capacity:'年产约2000万包湿巾', factoryArea:'15000平方米', foreignTrade:'是', foreignRatio:'70%', employees:'180人', tradeTeam:'6人', market:'中东、非洲', clients:'OEM客户为主', moq:'2000包', deliveryCycle:'35天', initialDate:'2023-04-20', cooperationYears:'2年', orderVolume:'85单', annualPurchase:'1200万', settlement:'预付', paymentTerms:'预付50%', performance:'B', riskLevel:'正常', deliveryRisk:'高', qualityRisk:'中', settlementRisk:'中', countryRisk:'低', advantage:'小盘纸价格有竞争力', improvement:'产能偏小，交付稳定性不足' },
+        photos:[],
+        logs:[ { time:'2025-01-15', user:'系统', action:'提交档案版本 V20250115-001' }, { time:'2025-01-10', user:'刘洋', action:'合作状态标记为已停用' } ]
+      }
+    };
+    const queryCategoryOptions = ['全部品类','纸袋','小盘纸','湿巾','卫生纸','卷纸','厨房纸','抽纸','纸盒','纸杯','擦手纸','纸托','纸塑','生活用纸','包装用纸'];
+    const queryRegionOptions = ['全部区域','华南','华东','华北','西南','华中','东北','西北','海外'];
+    const queryStatusOptions = ['全部状态','正常合作','已停用'];
+    function initQueryFilters(){
+      document.getElementById('qCategory').innerHTML=queryCategoryOptions.map(o=>`<option>${o}</option>`).join('');
+      document.getElementById('qRegion').innerHTML=queryRegionOptions.map(o=>`<option>${o}</option>`).join('');
+      document.getElementById('qStatus').innerHTML=queryStatusOptions.map(o=>`<option>${o}</option>`).join('');
+      renderQueryResults(supplierDataset);
+      renderAiExamples();
+    }
+    function renderQueryItemsHtml(list){
+      if(list.length===0) return '<div class="query-empty"><i class="fas fa-search-minus"></i>未找到符合条件的供应商，请调整查询条件</div>';
+      return list.map(s=>`
+        <div class="list-item" onclick="openSupplierProfile('${s.name}','${s.code}','${s.version}')">
+          <div class="query-item-main">
+            <div class="list-item-info">
+              <div class="list-item-name">${s.name}</div>
+              <div class="list-item-code">${s.code} · ${s.region}·${s.province}${s.city}</div>
+            </div>
+            <div class="query-item-tags">${s.categories.map(c=>`<span class="query-tag">${c}</span>`).join('')}</div>
+            <div class="query-item-sub"><span><i class="fas fa-user"></i> ${s.contact}</span><span><i class="fas fa-handshake"></i> ${s.status}</span></div>
+          </div>
+          <span class="status-badge ${s.status==='正常合作'?'ok':'off'}">${s.status}</span>
+          <i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </div>`).join('');
+    }
+    function renderQueryResults(list){
+      document.getElementById('qResultCount').textContent=list.length+' 家';
+      document.getElementById('queryResultList').innerHTML=renderQueryItemsHtml(list);
+    }
+    function querySuppliers(){
+      const kw=document.getElementById('qName').value.trim();
+      const cat=document.getElementById('qCategory').value;
+      const region=document.getElementById('qRegion').value;
+      const status=document.getElementById('qStatus').value;
+      const list=supplierDataset.filter(s=>{
+        if(kw && !s.name.includes(kw)) return false;
+        if(cat && cat!=='全部品类' && !s.categories.includes(cat)) return false;
+        if(region && region!=='全部区域' && s.region!==region) return false;
+        if(status && status!=='全部状态' && s.status!==status) return false;
+        return true;
+      });
+      renderQueryResults(list);
+      addSystemLog(`多维条件查询：名称=${kw||'不限'}，品类=${cat||'不限'}，区域=${region||'不限'}，状态=${status||'不限'}，命中${list.length}家`);
+    }
+    function resetQueryFilters(){
+      document.getElementById('qName').value='';
+      document.getElementById('qCategory').value='全部品类';
+      document.getElementById('qRegion').value='全部区域';
+      document.getElementById('qStatus').value='全部状态';
+      renderQueryResults(supplierDataset);
+    }
+    function switchQueryMode(mode){
+      document.querySelectorAll('.query-mode-tab').forEach(b=>b.classList.toggle('active', b.getAttribute('data-mode')===mode));
+      const multi=document.getElementById('queryMultiPanel');
+      const ai=document.getElementById('queryAiPanel');
+      if(mode==='multi'){ multi.style.display='flex'; ai.style.display='none'; }
+      else { multi.style.display='none'; ai.style.display='flex'; aiWelcomeIfNeeded(); }
+    }
+    // AI 会话查询
+    let aiWelcomed=false;
+    const aiExamples=['广东地区供应小盘纸的供应商','有哪些湿巾供应商','华东地区的纸袋供应商','已停用的供应商有哪些','搜索 恒安'];
+    function renderAiExamples(){
+      const c=document.getElementById('aiExampleChips');
+      c.innerHTML=aiExamples.map(e=>`<span class="ai-example-chip" onclick="useAiExample(this)">${e}</span>`).join('');
+    }
+    function useAiExample(el){ document.getElementById('aiQueryInput').value=el.textContent; sendAiQuery(); }
+    function aiWelcomeIfNeeded(){
+      if(aiWelcomed) return; aiWelcomed=true;
+      const area=document.getElementById('aiChatArea');
+      const msg=document.createElement('div');
+      msg.className='ai-msg bot';
+      msg.innerHTML='您好，我是 AI 查询助手 🤖<br>可以用自然语言描述您的查询需求，例如：<em>"广东地区供应小盘纸的供应商"</em>，我会自动解析查询条件并返回匹配的供应商列表。';
+      area.appendChild(msg);
+    }
+    function sendAiQuery(){
+      const input=document.getElementById('aiQueryInput');
+      const text=input.value.trim();
+      if(!text) return;
+      aiWelcomeIfNeeded();
+      const area=document.getElementById('aiChatArea');
+      const userMsg=document.createElement('div');
+      userMsg.className='ai-msg user';
+      userMsg.textContent=text;
+      area.appendChild(userMsg);
+      input.value='';
+      const think=document.createElement('div');
+      think.className='ai-thinking';
+      think.id='aiThinking';
+      think.innerHTML='<i class="fas fa-spinner fa-spin"></i> AI 正在智能解析查询意图...';
+      area.appendChild(think);
+      area.scrollTop=area.scrollHeight;
+      setTimeout(()=>{ const th=document.getElementById('aiThinking'); if(th) th.remove(); doAiQuery(text); }, 800);
+    }
+    function parseAIQuery(text){
+      const t=text.trim();
+      const conds={keyword:'',region:'',province:'',category:'',status:''};
+      if(/停用/.test(t)) conds.status='已停用';
+      else if(/正常/.test(t)) conds.status='正常合作';
+      ['华南','华东','华北','西南','华中','东北','西北','海外'].forEach(r=>{ if(t.includes(r)) conds.region=r; });
+      ['广东','福建','浙江','江苏','天津','山东','上海','北京','河北','四川','湖北','湖南','安徽','河南','辽宁'].forEach(p=>{ if(t.includes(p)) conds.province=p; });
+      ['小盘纸','纸袋','湿巾','卫生纸','卷纸','厨房纸','抽纸','纸盒','纸杯','擦手纸','纸托','纸塑','生活用纸','包装用纸','纸尿裤','原纸'].forEach(c=>{ if(t.includes(c)) conds.category=c; });
+      if(!conds.region&&!conds.province&&!conds.category&&!conds.status){
+        conds.keyword=t.replace(/供应商|供应|地区|区域|的|家|有哪些|什么|搜索|查询|帮我|找/g,'').trim();
+      }
+      return conds;
+    }
+    function matchAiConditions(conds){
+      return supplierDataset.filter(s=>{
+        if(conds.keyword && !s.name.includes(conds.keyword)) return false;
+        if(conds.region && s.region!==conds.region) return false;
+        if(conds.province && s.province!==conds.province) return false;
+        if(conds.category && !s.categories.includes(conds.category)) return false;
+        if(conds.status && s.status!==conds.status) return false;
+        return true;
+      });
+    }
+    function doAiQuery(text){
+      const conds=parseAIQuery(text);
+      const list=matchAiConditions(conds);
+      const tags=[];
+      if(conds.province) tags.push(`所在区域=${conds.province}`);
+      else if(conds.region) tags.push(`所在区域=${conds.region}`);
+      if(conds.category) tags.push(`供应品类=${conds.category}`);
+      if(conds.status) tags.push(`合作状态=${conds.status}`);
+      if(conds.keyword) tags.push(`名称包含=${conds.keyword}`);
+      const area=document.getElementById('aiChatArea');
+      const botMsg=document.createElement('div');
+      botMsg.className='ai-msg bot';
+      botMsg.innerHTML=`已为您解析查询意图，匹配到 <strong>${list.length}</strong> 家供应商${tags.length?`<div class="ai-parse-tags">${tags.map(t=>`<span class="ai-parse-tag">${t}</span>`).join('')}</div>`:''}<div style="font-size:11px;color:#94a3b8;margin-top:6px;">点击供应商可查看完整画像档案及历史操作日志</div>`;
+      area.appendChild(botMsg);
+      const listWrap=document.createElement('div');
+      listWrap.className='ai-result-inline';
+      listWrap.innerHTML=renderQueryItemsHtml(list);
+      area.appendChild(listWrap);
+      area.scrollTop=area.scrollHeight;
+      addSystemLog(`AI会话查询："${text}"，解析条件 ${tags.join('、')||'无'}，命中${list.length}家`);
+    }
+    initQueryFilters();
+    function openCamera(){ document.getElementById('cameraModal').style.display='flex'; }
+    function closeCamera(){ document.getElementById('cameraModal').style.display='none'; }
+    function captureCard(){ closeCamera(); document.getElementById('supplierName').value='清风纸业（华南）有限公司'; document.getElementById('contact1').value='林婉如'; document.getElementById('title1').value='供应链经理'; document.getElementById('phone1').value='188****5623'; document.getElementById('email1').value='linwr@qingfeng.com'; document.getElementById('wechat1').value='paper_linwr'; document.getElementById('website').value='https://www.qingfengpaper.com'; compareAllFields(); addSystemLog('名片识别完成'); alert('📷 名片识别完成'); }
     document.getElementById('uploadDocBtn').addEventListener('click',()=>document.getElementById('hiddenDocInput').click());
-    document.getElementById('hiddenDocInput').addEventListener('change',function(e){
-      const fs=Array.from(e.target.files); if(!fs.length)return;
-      fs.forEach(f=>{if(!selectedDocFiles.some(x=>x.name===f.name&&x.size===f.size)){selectedDocFiles.push(f); document.getElementById('interviewInput').value+=`\n[OCR:${f.name}] 拥有FSC认证，主营生活用纸。`; addSystemLog(`上传文档${f.name}`);}});
-      renderFileChips(); this.value='';
-    });
-    function renderFileChips() { const c=document.getElementById('fileChipsContainer'); c.innerHTML=''; selectedDocFiles.forEach((f,i)=>{const d=document.createElement('div');d.className='chip';let ic='fa-file-lines';if(f.name.endsWith('.pdf'))ic='fa-file-pdf';else if(f.name.endsWith('.doc')||f.name.endsWith('.docx'))ic='fa-file-word';else if(f.name.endsWith('.xls')||f.name.endsWith('.xlsx'))ic='fa-file-excel';else if(f.type.startsWith('image/'))ic='fa-file-image';d.innerHTML=`<i class="fas ${ic}"></i><span>${f.name.substring(0,16)}</span><i class="fas fa-times-circle" data-index="${i}"></i>`;c.appendChild(d);}); document.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',function(e){const idx=e.target.getAttribute('data-index');if(idx!==null){selectedDocFiles.splice(parseInt(idx),1);renderFileChips();addSystemLog('移除文档');}})); }
-    function fetchBusinessInfo() {
-      document.getElementById('creditCode').value='91350500MA32TQHXX8'; document.getElementById('legalPerson').value='施文博';
-      document.getElementById('regCapital').value='50000万人民币'; document.getElementById('establishYears').value='40年';
-      document.getElementById('companyType').value='有限责任公司'; document.getElementById('staffSize').value='3500人';
-      document.getElementById('industry').value='造纸和纸制品业'; document.getElementById('businessScope').value='生产生活用纸、文化用纸等。';
-      addSystemLog('工商信息同步'); alert('✅ 工商信息已同步');
+    document.getElementById('hiddenDocInput').addEventListener('change',function(e){const fs=Array.from(e.target.files);if(!fs.length)return;fs.forEach(f=>{if(!selectedDocFiles.some(x=>x.name===f.name&&x.size===f.size)){selectedDocFiles.push(f);document.getElementById('interviewInput').value+=`\n[OCR:${f.name}] 拥有FSC认证，主营生活用纸。`;addSystemLog(`上传文档${f.name}`);}});renderFileChips();this.value='';});
+    function renderFileChips(){const c=document.getElementById('fileChipsContainer');c.innerHTML='';selectedDocFiles.forEach((f,i)=>{const d=document.createElement('div');d.className='chip';let ic='fa-file-lines';if(f.name.endsWith('.pdf'))ic='fa-file-pdf';else if(f.name.endsWith('.doc')||f.name.endsWith('.docx'))ic='fa-file-word';else if(f.name.endsWith('.xls')||f.name.endsWith('.xlsx'))ic='fa-file-excel';else if(f.type.startsWith('image/'))ic='fa-file-image';d.innerHTML=`<i class="fas ${ic}"></i><span>${f.name.substring(0,16)}</span><i class="fas fa-times-circle" data-index="${i}"></i>`;c.appendChild(d);});document.querySelectorAll('.fa-times-circle').forEach(i=>i.addEventListener('click',function(e){const idx=e.target.getAttribute('data-index');if(idx!==null){selectedDocFiles.splice(parseInt(idx),1);renderFileChips();addSystemLog('移除文档');}}));}
+    function fetchBusinessInfo(){document.getElementById('creditCode').value='91350500MA32TQHXX8';document.getElementById('legalPerson').value='施文博';document.getElementById('regCapital').value='50000万人民币';document.getElementById('establishYears').value='40年';document.getElementById('companyType').value='有限责任公司';document.getElementById('staffSize').value='3500人';document.getElementById('industry').value='造纸和纸制品业';document.getElementById('businessScope').value='生产生活用纸、文化用纸等。';compareAllFields();addSystemLog('工商信息同步');alert('✅ 工商信息已同步');}
+    function saveBusinessInfo(){addSystemLog('工商信息已保存');alert('✅ 工商信息已保存');}
+    function aiParseOperation(){ document.getElementById('overwriteBasicChk').checked=false; document.getElementById('aiParseModal').style.display='flex'; }
+    function closeAiParseModal(){ document.getElementById('aiParseModal').style.display='none'; }
+    function doAiParse(){
+      const overwriteBasic = document.getElementById('overwriteBasicChk').checked;
+      document.getElementById('aiParseModal').style.display='none';
+      // 经营信息字段
+      const d={opQualification:'ISO 9001,FSC',opCertification:'ISO 14001',opExport:'海关备案',opCapacity:'年产50万吨',opFactoryArea:'20万㎡',opMachine:'维美德12台',opEmployees:'3500人',opTradeTeam:'80人',opMarket:'东南亚',opClients:'沃尔玛',opMOQ:'1个柜',opDelivery:'15-25天',opOrderVolume:'1200单',opAnnualPurchase:'2.5亿',opSettlement:'T/T',opPaymentTerms:'Net 60天',opAdvantage:'产能充足',opImprovement:'新品开发'};
+      for(const[k,v]of Object.entries(d))document.getElementById(k).value=v;
+      document.getElementById('opGrade').value='A级';document.getElementById('opRisk').value='否';document.getElementById('opForeignTrade').value='是';
+      document.getElementById('opForeignRatio').value='65%';
+      document.getElementById('opPerformance').value='AAA';document.getElementById('opRiskLevel').value='守信激励对象';
+      document.getElementById('opDeliveryRisk').value='低';document.getElementById('opQualityRisk').value='低';
+      document.getElementById('opSettlementRisk').value='极低';document.getElementById('opCountryRisk').value='低';
+      setMultiSelectValues('opMainProduct',['生活用纸','湿巾']);setMultiSelectValues('opCoreCategory',['面巾纸','卫生纸','湿巾']);
+      // 勾选后才覆盖基础信息页签字段
+      if(overwriteBasic){
+        document.getElementById('supplierName').value='清风纸业（华南）有限公司';
+        document.getElementById('contact1').value='林海';
+        document.getElementById('title1').value='供应链总监';
+        document.getElementById('phone1').value='138****6688';
+        document.getElementById('email1').value='linhai@qingfeng.com';
+        document.getElementById('wechat1').value='qf_linhai';
+        document.getElementById('website').value='https://www.qingfengpaper.com';
+        document.getElementById('detailAddress').value='福建省泉州市晋江市经济开发区纸业园12号';
+        document.getElementById('relatedCompany').value='清风集团股份有限公司';
+        addSystemLog('AI解析：同时覆盖更新基础信息与经营信息');
+      } else {
+        addSystemLog('AI解析：仅更新经营信息');
+      }
+      compareAllFields();
+      alert(overwriteBasic?'🤖 AI解析完成：基础信息与经营信息已更新':'🤖 AI解析完成：经营信息已更新');
     }
-    function saveBusinessInfo() { addSystemLog('工商信息已保存'); alert('✅ 工商信息已保存'); }
-    function aiParseOperation() {
-      const d={opQualification:'ISO 9001,FSC',opCertification:'ISO 14001',opExport:'海关备案',opMainProduct:'生活用纸',opCoreCategory:'面巾纸',opCapacity:'年产50万吨',opFactoryArea:'20万㎡',opMachine:'维美德12台',opEmployees:'3500人',opTradeTeam:'80人',opMarket:'东南亚',opClients:'沃尔玛',opMOQ:'1个柜',opDelivery:'15-25天',opCooperationYears:'8年',opOrderVolume:'1200单',opAnnualPurchase:'2.5亿',opSettlement:'T/T',opPaymentTerms:'Net 60天',opAdvantage:'产能充足',opImprovement:'新品开发'};
-      for(const[k,v]of Object.entries(d)) document.getElementById(k).value=v;
-      document.getElementById('opGrade').value='A级'; document.getElementById('opRisk').value='否'; document.getElementById('opForeignTrade').value='是';
-      document.getElementById('opPerformance').value='AAA'; document.getElementById('opRiskLevel').value='守信激励对象';
-      document.getElementById('opDeliveryRisk').value='低'; document.getElementById('opQualityRisk').value='低';
-      document.getElementById('opSettlementRisk').value='极低'; document.getElementById('opCountryRisk').value='低';
-      addSystemLog('AI解析经营信息'); alert('🤖 AI解析完成');
-    }
-    function saveSupplier() { addSystemLog('基础信息已保存'); alert('✅ 基础信息已保存'); }
-    function saveOperationInfo() { addSystemLog('经营信息已保存'); alert('✅ 经营信息已保存'); }
-    function submitSupplier() {
-      const name=document.getElementById('supplierName').value||'未命名供应商';
-      const ver='V'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.floor(Math.random()*100);
-      document.getElementById('submitModalMsg').innerHTML=`确定将保存 <strong>${name}</strong> 的档案新版本 <strong>${ver}</strong> 至档案库吗？`;
-      pendingSubmit={name,ver}; document.getElementById('submitModal').style.display='flex';
-    }
-    function closeSubmitModal() { document.getElementById('submitModal').style.display='none'; pendingSubmit=null; }
-    function confirmSubmit() {
-      if(pendingSubmit){ addSystemLog(`提交档案${pendingSubmit.name}，版本${pendingSubmit.ver}`); alert(`✅ 已创建新版本：${pendingSubmit.ver}`); }
+    function setMultiSelectValues(f,v){const d=document.getElementById(f+'Dropdown');d.querySelectorAll('input[type="checkbox"]').forEach(c=>{c.checked=v.includes(c.value);});updateMultiSelect(f);}
+    function saveSupplier(){addSystemLog('基础信息已保存');alert('✅ 基础信息已保存');}
+    function saveOperationInfo(){addSystemLog('经营信息已保存');alert('✅ 经营信息已保存');}
+    function submitSupplier(){const n=document.getElementById('supplierName').value||'未命名供应商';const v='V'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.floor(Math.random()*100);document.getElementById('submitModalMsg').innerHTML=`确定将保存 <strong>${n}</strong> 的档案新版本 <strong>${v}</strong> 至档案库吗？`;pendingSubmit={name:n,ver:v};document.getElementById('submitModal').style.display='flex';}
+    function closeSubmitModal(){document.getElementById('submitModal').style.display='none';pendingSubmit=null;}
+    function confirmSubmit(){
+      if(pendingSubmit){
+        // 待提交照片随档案一并归入已上传列表
+        if(pendingPhotos.length>0){
+          const now=getChinaTimeString();
+          pendingPhotos.forEach(p=>{ visitPhotos.push({ id:Date.now()+Math.random(), dataUrl:p.dataUrl, name:p.name, time:now }); });
+          addSystemLog(`随档案上传现场照片 ${pendingPhotos.length} 张`);
+          pendingPhotos=[]; renderPendingPhotos(); renderPhotoHistory();
+        }
+        addSystemLog(`提交档案${pendingSubmit.name}，版本${pendingSubmit.ver}`);
+        alert(`✅ 已创建新版本：${pendingSubmit.ver}`);
+      }
       document.getElementById('submitModal').style.display='none'; pendingSubmit=null;
     }
-    addSystemLog('系统启动'); renderFileChips(); renderSystemLogs();
+    // ===== 权限管理：人员增删改 =====
+    function openPermissionPage(name,code){
+      permCurrentSupplier=name; permCurrentCode=code;
+      document.getElementById('permSupplierName').textContent=name;
+      document.getElementById('permSupplierCode').textContent=code;
+      document.getElementById('supplierListPage').classList.remove('active');
+      document.getElementById('permissionPage').classList.add('active');
+      renderStaffList();
+      addSystemLog(`进入"${name}"权限管理页`);
+    }
+    function closePermissionPage(){
+      document.getElementById('permissionPage').classList.remove('active');
+      document.getElementById('supplierListPage').classList.add('active');
+    }
+    function renderStaffList(){
+      const list=supplierStaffMap[permCurrentSupplier]||[];
+      const c=document.getElementById('staffListContainer');
+      if(list.length===0){
+        c.innerHTML='<div style="text-align:center;padding:24px 10px;color:#94a3b8;font-size:12px;"><i class="fas fa-user-slash" style="font-size:28px;display:block;margin-bottom:8px;color:#cbd5e1;"></i>暂无授权人员，点击右上角"添加人员"开通维护权限</div>';
+        return;
+      }
+      c.innerHTML=list.map(s=>`
+        <div class="staff-item">
+          <div class="staff-avatar">${s.name.charAt(0)}</div>
+          <div class="staff-info">
+            <div class="staff-name">${s.name}</div>
+            <div class="staff-role"><i class="fas fa-building"></i> ${s.dept}</div>
+          </div>
+          <div class="staff-actions">
+            <button class="staff-act-btn edit" title="修改" onclick="openStaffModal(${s.id})"><i class="fas fa-edit"></i></button>
+            <button class="staff-act-btn del" title="删除" onclick="deleteStaff(${s.id})"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>`).join('');
+    }
+    function openStaffModal(id){
+      editingStaffId=id||null;
+      document.getElementById('staffModalTitle').textContent=id?'修改授权人员':'添加授权人员';
+      const sel=document.getElementById('staffNameSelect');
+      const currentNames=(supplierStaffMap[permCurrentSupplier]||[]).map(x=>x.name);
+      sel.innerHTML='<option value="">请选择人员</option>'+employeeList
+        .filter(e=>!id||e.name===(supplierStaffMap[permCurrentSupplier]||[]).find(x=>x.id===id)?.name)
+        .map(e=>`<option value="${e.name}">${e.name}（${e.dept}）</option>`).join('');
+      if(id){
+        const s=(supplierStaffMap[permCurrentSupplier]||[]).find(x=>x.id===id);
+        if(s){ sel.value=s.name; document.getElementById('staffDeptInput').value=s.dept; }
+      } else {
+        document.getElementById('staffDeptInput').value='';
+      }
+      document.getElementById('staffModal').style.display='flex';
+    }
+    function onStaffSelectChange(){
+      const name=document.getElementById('staffNameSelect').value;
+      const emp=employeeList.find(e=>e.name===name);
+      document.getElementById('staffDeptInput').value=emp?emp.dept:'';
+    }
+    function closeStaffModal(){ document.getElementById('staffModal').style.display='none'; editingStaffId=null; }
+    function saveStaff(){
+      const name=document.getElementById('staffNameSelect').value;
+      const dept=document.getElementById('staffDeptInput').value;
+      if(!name){ alert('请选择授权人员'); return; }
+      if(!supplierStaffMap[permCurrentSupplier]) supplierStaffMap[permCurrentSupplier]=[];
+      if(editingStaffId){
+        const s=supplierStaffMap[permCurrentSupplier].find(x=>x.id===editingStaffId);
+        if(s){ s.name=name; s.dept=dept; }
+        addSystemLog(`修改${permCurrentSupplier}授权人员：${name}`);
+      } else {
+        if(supplierStaffMap[permCurrentSupplier].some(x=>x.name===name)){ alert('该人员已在授权列表中'); return; }
+        const newId=Date.now();
+        supplierStaffMap[permCurrentSupplier].push({ id:newId, name, dept });
+        addSystemLog(`为${permCurrentSupplier}新增授权人员：${name}`);
+      }
+      renderStaffList(); closeStaffModal();
+      alert('✅ 人员信息已保存');
+    }
+    function deleteStaff(id){
+      const list=supplierStaffMap[permCurrentSupplier]||[];
+      const s=list.find(x=>x.id===id);
+      if(!s) return;
+      if(confirm(`确定移除"${s.name}"的维护权限吗？`)){
+        supplierStaffMap[permCurrentSupplier]=list.filter(x=>x.id!==id);
+        renderStaffList();
+        addSystemLog(`移除${permCurrentSupplier}授权人员：${s.name}`);
+      }
+    }
+    // ===== 现场照片上传与展示 =====
+    // 历史已提交照片（预置一张示例，SVG占位图）
+    const sampleSvg = 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="120" height="120" fill="#dbeafe"/><g fill="#3b82f6"><rect x="20" y="60" width="80" height="40" rx="3"/><rect x="30" y="45" width="25" height="15" rx="2"/><rect x="60" y="40" width="30" height="20" rx="2"/></g><circle cx="40" cy="80" r="5" fill="#1e3a8a"/><circle cx="80" cy="80" r="5" fill="#1e3a8a"/></svg>');
+    let visitPhotos = [
+      { id: 1, dataUrl: sampleSvg, name: '生产车间外景.jpg', time: '2025-08-10 14:23' }
+    ];
+    let pendingPhotos = []; // 新选待提交
+    function renderPendingPhotos(){
+      const area=document.getElementById('pendingPhotoArea');
+      const row=document.getElementById('pendingPhotoRow');
+      if(pendingPhotos.length===0){ area.style.display='none'; row.innerHTML=''; return; }
+      area.style.display='block';
+      row.innerHTML=pendingPhotos.map((p,i)=>`<div class="pending-photo-item"><img src="${p.dataUrl}"><button class="pending-photo-del" onclick="deletePendingPhoto(${i})"><i class="fas fa-times"></i></button></div>`).join('');
+    }
+    function deletePendingPhoto(idx){ pendingPhotos.splice(idx,1); renderPendingPhotos(); }
+    function renderPhotoHistory(){
+      const c=document.getElementById('photoHistoryList');
+      document.getElementById('photoCountBadge').textContent=visitPhotos.length;
+      if(visitPhotos.length===0){
+        c.innerHTML='<div class="photo-empty"><i class="fas fa-image"></i>暂无已上传照片，点击上方按钮拍照或上传</div>';
+        return;
+      }
+      c.innerHTML=visitPhotos.map((p,i)=>`<div class="photo-history-item"><img src="${p.dataUrl}"><div class="photo-history-info"><div class="photo-history-name">${p.name}</div><div class="photo-history-time"><i class="far fa-clock"></i> ${p.time}</div></div><button class="staff-act-btn del" onclick="deleteHistoryPhoto(${i})" title="删除"><i class="fas fa-trash"></i></button></div>`).join('');
+    }
+    function deleteHistoryPhoto(idx){
+      if(confirm('确定删除该照片吗？')){
+        visitPhotos.splice(idx,1);
+        renderPhotoHistory();
+        addSystemLog('删除已上传现场照片');
+      }
+    }
+    document.getElementById('hiddenPhotoInput').addEventListener('change',function(e){
+      const fs=Array.from(e.target.files).filter(f=>f.type.startsWith('image/'));
+      if(!fs.length) return;
+      let pending=fs.length;
+      fs.forEach(f=>{
+        const reader=new FileReader();
+        reader.onload=function(ev){
+          pendingPhotos.push({ dataUrl:ev.target.result, name:f.name });
+          pending--;
+          if(pending===0){ renderPendingPhotos(); }
+        };
+        reader.readAsDataURL(f);
+      });
+      this.value='';
+    });
+    renderPhotoHistory();
+    addSystemLog('系统启动');renderFileChips();renderSystemLogs();
   </script>
 </body>
 </html>
